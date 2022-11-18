@@ -215,7 +215,7 @@ public static class LocalizationTool
 
 	private static IWorkbook ReadBook(string inputPath)
 	{
-		using (FileStream fileStream = new FileStream(inputPath, FileMode.Open, FileAccess.Read))
+		using (FileStream fileStream = new FileStream(inputPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
 		{
 			return WorkbookFactory.Create(fileStream);
 		}
@@ -249,7 +249,9 @@ public static class LocalizationTool
 			var strings = new List<string>();
 			for (int j = 1; j < headerRow.LastCellNum; ++j)
 			{
-				strings.Add(row.GetCell(j).StringCellValue);
+				var value = row.GetCell(j).StringCellValue;
+				value.Replace("\n", "\\n");
+				strings.Add(value);
 			}
 
 			items.Add((key, strings.ToArray()));

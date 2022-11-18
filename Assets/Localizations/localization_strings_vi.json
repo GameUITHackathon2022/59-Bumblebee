@@ -5,6 +5,8 @@
     "STR_EXAMPLE_1": "Chuỗi ví dụ thật 1",
     "STR_EXAMPLE_2": "Chuỗi ví dụ thật 2",
     "STR_EXAMPLE_3": "Chuỗi ví dụ thật 3",
+    "STR_TEST_NEWLINE": "Dòng 1\nDòng 2",
+    "STR_TEXT_PARAMETER": "Biến: {test_param}",
     "STR_HP_LABEL": "Máu",
     "STR_MP_LABEL": "Mana"
   }
