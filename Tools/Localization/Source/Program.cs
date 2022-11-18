@@ -153,14 +153,20 @@ public static class LocalizationTool
 			Log("\n------# Now outputing jsons:", textColor: ConsoleColor.Green);
 			foreach (var output in outputs)
 			{
+				var name = _outName.Replace("<lang>", output.Key);
+				var path = System.IO.Path.Combine(_outPath, name);
+
 				if (!Directory.Exists(_outPath))
 				{
-					Log($"Directory {_outPath} does not exist, so it is created.", textColor: ConsoleColor.Cyan);
+					Log($"Directory \"{_outPath}\" does not exist, so it is created.", textColor: ConsoleColor.Cyan);
 					Directory.CreateDirectory(_outPath);
 				}
 
-				var name = _outName.Replace("<lang>", output.Key);
-				var path = System.IO.Path.Combine(_outPath, name);
+				if (File.Exists(path))
+				{
+					Log($"File at path \"{path}\" already exists, it will be overriden.", textColor: ConsoleColor.Cyan);
+				}
+
 				var writableText = JsonConvert.SerializeObject(output.Value, Formatting.Indented);
 				File.WriteAllText(path, writableText);
 				Log($"Wrote to {path} with localizations for language \"{output.Key}\".");
@@ -175,10 +181,16 @@ public static class LocalizationTool
 				var name = _outName.Replace("<lang>", output.Key);
 				var path = System.IO.Path.Combine(_outPath, name);
 				var resPath = System.IO.Path.Combine(_resourcesPath, name);
-				
+
+				if (!Directory.Exists(_resourcesPath))
+				{
+					Log($"Directory \"{_resourcesPath}\", so it is created.", textColor: ConsoleColor.Cyan);
+					Directory.CreateDirectory(_resourcesPath);
+				}
+
 				if (File.Exists(resPath))
 				{
-					Log($"File at path {resPath}, it will be overriden.", textColor: ConsoleColor.Cyan);
+					Log($"File at path \"{resPath}\", it will be overriden.", textColor: ConsoleColor.Cyan);
 				}
 
 				System.IO.File.Copy(path, resPath, overwrite: true);

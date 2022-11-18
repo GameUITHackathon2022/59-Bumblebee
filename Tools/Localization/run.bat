@@ -1,4 +1,2 @@
-cd Source
-dotnet build
-dotnet run -- config.ini
+dotnet run --project ./Source/ -- ./config.ini
 pause
