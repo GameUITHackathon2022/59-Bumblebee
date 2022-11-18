@@ -76,3 +76,4 @@ crashlytics-build.properties
 Tools/*/Source/bin/
 Tools/*/Source/obj/
 !Tools/*/Source/*.csproj
+Tools/Localization/Output

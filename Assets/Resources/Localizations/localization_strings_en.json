@@ -1,0 +1,11 @@
+{
+  "CultureCode": "en",
+  "KeyToStringDictionary": {
+    "STR_TEMPLATE": "Example string",
+    "STR_EXAMPLE_1": "Real Example string 1",
+    "STR_EXAMPLE_2": "Real Example string 2",
+    "STR_EXAMPLE_3": "Real Example string 3",
+    "STR_HP_LABEL": "Health Points",
+    "STR_MP_LABEL": "Mana Points"
+  }
+}
