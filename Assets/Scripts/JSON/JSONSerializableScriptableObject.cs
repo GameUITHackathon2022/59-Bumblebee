@@ -45,6 +45,7 @@ public class JSONSerializableScriptableObject<T> : ScriptableObject where T : JS
 
     protected virtual void OnPostJsonDeserialization() { }
 
+#pragma warning disable 0693
     private class DerivedTypeOnlyContractResolver<T> : DefaultContractResolver
     {
         protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
@@ -60,4 +61,5 @@ public class JSONSerializableScriptableObject<T> : ScriptableObject where T : JS
             }
         }
     }
+#pragma warning restore 0693
 }

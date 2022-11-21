@@ -17,13 +17,9 @@ using System;
 
         public static bool IsMatch(string input, string pattern)
         {
-            // 同一文字列ならtrue
             if (pattern == input) return true;
-            // フォーマットがなければアウト
             if (pattern == string.Empty) return false;
-            // テキストが空の時はワイルドだけ認める
             if (input == string.Empty) return IsTailAllWild(pattern, 0);
-            // フォーマットがワイルドならガバガバ
             if (IsTailAllWild(pattern, 0)) return true;
 
             var patternIndex = 0;
@@ -32,17 +28,12 @@ using System;
             
             while (patternIndex < pattern.Length)
             {
-                // [x-y]のパターンかもしれない
                 if (patternIndex + 4 < pattern.Length && pattern[patternIndex + 2] == hyphen)
                 {
-                    // フィルタが既にあるか、[で始まっているならそいつはフィルタである
                     if (filter != 0 || pattern[patternIndex] == bracketStart)
                     {
-                        // 最低でも5つ先までないと文法的にアウト
                         if (patternIndex + 5 >= pattern.Length)
                             throw new IndexOutOfRangeException();
-
-                        // フィルタのパターンを減らして楽をする
                         if (pattern[patternIndex + 1] == '0' && pattern[patternIndex + 3] == '9')
                             filter |= numeric09;
                         else if (pattern[patternIndex + 1] == '1' && pattern[patternIndex + 3] == '9')
@@ -54,10 +45,8 @@ using System;
                         else
                             throw new NotImplementedException();
 
-                        // ]で閉じられてる
                         if (pattern[patternIndex + 4] == bracketEnd)
                             patternIndex += 5;
-                        // [a-bc-d]みたいな感じ
                         else if (patternIndex + 7 < pattern.Length && pattern[patternIndex + 5] == hyphen)
                             patternIndex += 3;
                         else
@@ -67,7 +56,6 @@ using System;
                     }
                 }
 
-                // 同じ文字 or 単一文字
                 if (pattern[patternIndex] == input[inputIndex]
                 || pattern[patternIndex] == any)
                 {
@@ -84,17 +72,13 @@ using System;
                     continue;
                 }
 
-                // ワイルドカード
                 if (pattern[patternIndex] == wild)
                 {
-                    // 末尾までワイルドだけ
                     if (IsTailAllWild(pattern, patternIndex))
                     {
-                        // フィルタがないならtrue
                         if (filter == 0)
                             return true;
 
-                        // フィルタがあるならfalseなものがないか検索
                         for (var i = inputIndex; i < input.Length; ++i)
                         {
                             if (!Filter(input[i], filter))
@@ -103,29 +87,23 @@ using System;
                         return true;
                     }
 
-                    // ワイルド以外に語尾がある時
                     if (patternIndex < pattern.Length - 1)
                     {
-                        // 移動させたテキスト量
                         var shifted = 0;
 
                         while (inputIndex + shifted < input.Length)
                         {
-                            // フィルタを見るもじゃ
                             if (filter != 0 && !Filter(input[inputIndex + shifted], filter))
                                 return false;
 
-                            // ワイルドの次の文字と一致する文字がある（or続いている）ときの処理
                             if (pattern[patternIndex + 1] == input[inputIndex + shifted]
                                 || pattern[patternIndex + 1] == any)
                             {
                                 ++shifted;
 
-                                // 最後まで同じ文字じゃったな…
                                 if (inputIndex + shifted == input.Length)
                                     return true;
 
-                                // 違う文字がきたらbreakなのじゃ
                                 if (pattern[patternIndex + 1] != input[inputIndex + shifted]
                                     && pattern[patternIndex + 1] != any)
                                 {
@@ -133,16 +111,12 @@ using System;
                                     inputIndex += shifted - 1;
                                     break;
                                 }
-
-                                // 同じ文字がまだまだ続く
                                 if (inputIndex + shifted < input.Length)
                                     continue;
                             }
 
-                            // ワイルドの次の文字と違う文字の場合は素直にその次へ
                             ++shifted;
 
-                            // 最後まで違う文字じゃったな…
                             if (inputIndex + shifted == input.Length)
                                 return false;
                         }
