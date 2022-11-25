@@ -34,6 +34,7 @@ public class StickObject : MonoBehaviour
     private int _bounceContactCode;
     private float _invincibilityTimer;
 
+    public bool IsStunned => _bounceTimer > 0;
     public bool IsInvincible => _invincibilityTimer > 0;
 
     private void Start()
@@ -55,6 +56,11 @@ public class StickObject : MonoBehaviour
 
     private void ControlPosition(StickInputReceiver.InputState inputState)
     {
+        if (IsStunned)
+        {
+            _rigidbody.velocity = Vector2.zero;
+            return;
+        }
         var speedMod = 1f;
         if (inputState.SprintModifierMode == 1)
         {
@@ -85,11 +91,13 @@ public class StickObject : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Wall") && !IsInvincible)
+        if (collision.collider.CompareTag("Wall"))
         {
             _bounceTimer = _bounceTime;
             _bounceContactCode = GetContactRotationOnColliding(collision.GetContact(0).point);
             _invincibilityTimer = _invincibilityTime;
+
+            Debug.Log(collision.GetContact(0).normal);
         }
     }
 
@@ -142,7 +150,6 @@ public class StickObject : MonoBehaviour
             contactCode = -contactCode;
         }
 
-        Debug.Log(contactCode);
         return contactCode;
     }
 }
