@@ -22,4 +22,5 @@ public class LevelConfig
     [SerializeField] public int LevelNumber;
     [SerializeField] public string LevelName;
     [SerializeField] public RankToTimeDictionary RankTimes;
+    [SerializeField] public int StartRotateDirection = 1;
 }

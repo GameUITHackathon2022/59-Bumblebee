@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour
 
     public int LevelNumber => _config.LevelNumber;
     public string LevelName => _config.LevelName;
+    public int StartRotationDirection => _config.StartRotateDirection;
 
     private List<CollectableTrash> _allTrashs;
 

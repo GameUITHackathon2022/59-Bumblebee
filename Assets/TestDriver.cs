@@ -29,7 +29,7 @@ public class TestDriver : MonoBehaviour
 
     private void StartGame()
     {
-        _playerController.SpawnStick(_testLevelObject.GetStartPosition());
+        _playerController.SpawnStick(_testLevelObject.GetStartPosition(), _testLevelObject.StartRotationDirection);
         _testLevelObject.RefreshStage();
         _playerController.StartPlaying(_lives, _testLevelObject.TotalTrashCount, _testLevelObject.RankTimes);
     }

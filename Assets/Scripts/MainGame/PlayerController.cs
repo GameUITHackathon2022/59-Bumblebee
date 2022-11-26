@@ -118,11 +118,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public StickObject SpawnStick(Vector2 location)
+    public StickObject SpawnStick(Vector2 location, int rotation=1)
     {
         var go = Instantiate(_stickObjectPrefab, (Vector3)location + new Vector3(0f, 0f, -10f), Quaternion.identity);
         _stickObject = go.GetComponent<StickObject>();
         _stickObject.Input.LockControl();
+        _stickObject.ForceSetRotationDirection(rotation);
 
         _camera.LookAt = _stickObject.transform;
         _camera.Follow = _stickObject.transform;

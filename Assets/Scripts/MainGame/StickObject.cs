@@ -97,6 +97,11 @@ public class StickObject : MonoBehaviour
         PlaySinkAnimation();
     }
 
+    public void ForceSetRotationDirection(int value)
+    {
+        _rotateDirection = value;
+    }
+
     public void AllowToTouchGoal()
     {
         _levelEndable = true;
