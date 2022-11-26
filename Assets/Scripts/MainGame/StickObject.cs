@@ -1,25 +1,36 @@
-using ATL.AudioData;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class StickObject : MonoBehaviour
 {
+    [System.Serializable]
+    public class CornerPointPair
+    {
+        public Transform PositivePoint;
+        public Transform NegativePoint;
+
+        public void GetDistances(Vector2 point, out float posDistance, out float negDistance)
+        {
+            posDistance = Vector2.Distance(PositivePoint.position, point);
+            negDistance = Vector2.Distance(NegativePoint.position, point);
+        }
+    }
     [Header("Components")]
     [SerializeField] private Collider2D _collider;
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private StickInputReceiver _inputReceiver;
     [SerializeField] private Animator _animator;
 
-    [Header("ContactPoints")]
-    [SerializeField] private List<Collider2D> _positiveContactPoints;
-    [SerializeField] private List<Collider2D> _negativeContactPoints;
+    [Header("Contact Points")]
+    [SerializeField] private CornerPointPair _leftCornerPoint;
+    [SerializeField] private CornerPointPair _rightCornerPoint;
 
     [Header("Parameters - Movement")]
     [SerializeField] private float _speed = 3f;
     [SerializeField] private float _sprintMultiplier = 1.5f;
     [SerializeField] private float _doubleSprintMultiplier = 2f;
+    [SerializeField] private float _bounceDistance = 0.5f;
 
     [Header("Parameters - Spin")]
     [SerializeField] private float _rotateSpeed = 30f;
@@ -96,8 +107,7 @@ public class StickObject : MonoBehaviour
             _bounceTimer = _bounceTime;
             _bounceContactCode = GetContactRotationOnColliding(collision.GetContact(0).point);
             _invincibilityTimer = _invincibilityTime;
-
-            Debug.Log(collision.GetContact(0).normal);
+            DoPositionBounce(collision.GetContact(0).normal);
         }
     }
 
@@ -113,31 +123,36 @@ public class StickObject : MonoBehaviour
         }
     }
 
-    private int GetContactRotationOnColliding(Vector2 point)
+    private int GetContactRotationOnColliding(Vector2 contactPoint)
     {
         int contactCode = 0;
 
-        foreach (var collider in _positiveContactPoints)
+        CornerPointPair closestPair;
+
+        _leftCornerPoint.GetDistances(contactPoint, out float leftPosDist, out float leftNegDist);
+        _rightCornerPoint.GetDistances(contactPoint, out float rightPosDist, out float rightNegDist);
+
+        var minLeftDist = Mathf.Min(leftPosDist, leftNegDist);
+        var minRightDist = Mathf.Min(rightPosDist, rightNegDist);
+
+        if (minLeftDist < minRightDist)
         {
-            if (collider.bounds.min.x <= point.x && point.x <= collider.bounds.max.x
-                && collider.bounds.min.y <= point.y && point.y <= collider.bounds.max.y)
-            {
-                contactCode = -1;
-                break;
-            }
+            closestPair = _leftCornerPoint;
+        }
+        else
+        {
+            closestPair = _rightCornerPoint;
         }
 
-        if (contactCode == 0)
+        closestPair.GetDistances(contactPoint, out float posDist, out float negDist);
+
+        if (posDist < negDist)
         {
-            foreach (var collider in _negativeContactPoints)
-            {
-                if (collider.bounds.min.x <= point.x && point.x <= collider.bounds.max.x
-                    && collider.bounds.min.y <= point.y && point.y <= collider.bounds.max.y)
-                {
-                    contactCode = 1;
-                    break;
-                }
-            }
+            contactCode = -1;
+        }
+        else
+        {
+            contactCode = 1;
         }
 
         if (contactCode == 0)
@@ -151,5 +166,10 @@ public class StickObject : MonoBehaviour
         }
 
         return contactCode;
+    }
+
+    private void DoPositionBounce(Vector2 normal)
+    {
+        _rigidbody.MovePosition((Vector2)transform.position + normal * _bounceDistance);
     }
 }
