@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JSAM;
 
 using DG.Tweening;
 using static Cinemachine.DocumentationSortingAttribute;
@@ -84,6 +85,7 @@ public class SessionDriver : MonoBehaviour
 
     private void OnPlayerDead()
     {
+        AudioManager.PlayMusic(Music.Failure1);
         EndLevel();
     }
 
@@ -95,6 +97,7 @@ public class SessionDriver : MonoBehaviour
 
     private void OnPlayerWin()
     {
+        AudioManager.PlayMusic(Music.Victory);
         EndLevel();
     }
 }

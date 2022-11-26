@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using JSAM;
 public class StickObject : MonoBehaviour
 {
     [System.Serializable]
@@ -197,6 +197,7 @@ public class StickObject : MonoBehaviour
 
             ParticleManager.Instance.PlayEffect("Explosion", collision.GetContact(0).point);
             CinemachineShake.Instance.ShakeCamera(1f, 0.25f);
+            AudioManager.PlaySound(Sounds.WallHit);
         }
         else if (collision.collider.CompareTag("Spring"))
         {
@@ -210,6 +211,8 @@ public class StickObject : MonoBehaviour
             {
                 anim.SetTrigger("isBounced");
             }
+
+            AudioManager.PlaySound(Sounds.Spring);
 
             _rotateDirection = -_rotateDirection;
             AddBounce(collision.collider.GetComponent<SpringObject>().SpringBounceAngle,
@@ -229,10 +232,12 @@ public class StickObject : MonoBehaviour
                 var pullVect = puller.GetPullVector(transform.position);
                 _influenceVector = pullVect;
             }
+            AudioManager.PlaySound(Sounds.Button3);
         }
         else if (collider.CompareTag("HealPad"))
         {
             HealLivesEvent?.Invoke();
+            AudioManager.PlaySound(Sounds.Heal);
         }
     }
 
@@ -255,6 +260,7 @@ public class StickObject : MonoBehaviour
             collider.gameObject.GetComponent<CollectableTrash>().OnCollect();
             TrashCollectedEvent?.Invoke(1);
             ParticleManager.Instance.PlayEffect("Trash", collider.gameObject.transform.position);
+            AudioManager.PlaySound(Sounds.Button2);
         }
     }
 
