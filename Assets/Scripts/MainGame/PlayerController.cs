@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public class LevelEndStatistics
     {
+        public bool PlayerWon;
         public int TrashCollected;
         public int TotalTrash;
         public float TimePlayed;
@@ -177,6 +178,7 @@ public class PlayerController : MonoBehaviour
         {
             return new LevelEndStatistics
             {
+                PlayerWon = _touchedGoal,
                 TimePlayed = _playTime,
                 Rank = _currentRank,
                 TrashCollected = CollectedTrashCount,

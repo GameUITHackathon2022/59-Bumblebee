@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private List<LevelConfig> _allLevels;
+    [SerializeField] private LoadingScreen _loadingScreen;
+    [SerializeField] private List<AssetReference> _levelObjects;
+    [SerializeField] private List<string> _levelNames;
 
-    public LevelConfig GetLevel(int levelNumber)
-    {
-        return _allLevels.FirstOrDefault(x => x.LevelNumber == levelNumber);
-    }
-
-    public LevelConfig GetLevel(string levelName)
-    {
-        return _allLevels.FirstOrDefault(x => x.LevelName == levelName);
-    }
+    public List<AssetReference> Levels => _levelObjects;
+    public List<string> LevelNames => _levelNames;
+    public LoadingScreen LoadingScreen => _loadingScreen;
 }
