@@ -222,7 +222,7 @@ MonoBehaviour:
   _rotateSpeed: 60
   _defaultRotation: 1
   _bounceTime: 0.1
-  _invincibilityTime: 0.5
+  _invincibilityTime: 0.3
   _bounceRotation: 25
   _touchGoalSpeedIncrease: 500
   _springBoostDeteriorateRate: 100
