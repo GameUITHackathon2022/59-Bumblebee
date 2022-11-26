@@ -17,16 +17,30 @@ public class LevelDropShadow : MonoBehaviour
         Destroy(go.GetComponent<Rigidbody2D>());
         Destroy(go.GetComponent<LevelDropShadow>());
         go.GetComponent<Tilemap>().color = _color;
-
         go.transform.localPosition = new Vector3(0f, -_baseOffset, _zOffset);
 
         go = Instantiate(go, transform);
+        Destroy(go.GetComponent<CompositeCollider2D>());
+        Destroy(go.GetComponent<TilemapCollider2D>());
+        Destroy(go.GetComponent<Rigidbody2D>());
+        Destroy(go.GetComponent<LevelDropShadow>());
+        go.GetComponent<Tilemap>().color = _color;
         go.transform.localPosition = new Vector3(0f, _baseOffset, _zOffset);
 
         go = Instantiate(go, transform);
+        Destroy(go.GetComponent<CompositeCollider2D>());
+        Destroy(go.GetComponent<TilemapCollider2D>());
+        Destroy(go.GetComponent<Rigidbody2D>());
+        Destroy(go.GetComponent<LevelDropShadow>());
+        go.GetComponent<Tilemap>().color = _color;
         go.transform.localPosition = new Vector3(-_baseOffset, 0f, _zOffset);
 
         go = Instantiate(go, transform);
+        Destroy(go.GetComponent<CompositeCollider2D>());
+        Destroy(go.GetComponent<TilemapCollider2D>());
+        Destroy(go.GetComponent<Rigidbody2D>());
+        Destroy(go.GetComponent<LevelDropShadow>());
+        go.GetComponent<Tilemap>().color = _color;
         go.transform.localPosition = new Vector3(_baseOffset, 0f, _zOffset);
     }
 }
