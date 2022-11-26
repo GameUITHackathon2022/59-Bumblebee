@@ -6,15 +6,6 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private List<LevelConfig> _allLevels;
+    [SerializeField] private List<GameObject> _levelObjects;
 
-    public LevelConfig GetLevel(int levelNumber)
-    {
-        return _allLevels.FirstOrDefault(x => x.LevelNumber == levelNumber);
-    }
-
-    public LevelConfig GetLevel(string levelName)
-    {
-        return _allLevels.FirstOrDefault(x => x.LevelName == levelName);
-    }
 }

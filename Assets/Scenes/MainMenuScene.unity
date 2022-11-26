@@ -196,6 +196,7 @@ MonoBehaviour:
       _keyValues: 
       _keys: 
       _values: []
+    StartRotateDirection: 1
   - LevelNumber: 0
     LevelName: 
     RankTimes:
@@ -224,6 +225,7 @@ MonoBehaviour:
       _keyValues: 
       _keys: 
       _values: []
+    StartRotateDirection: 1
   - LevelNumber: 0
     LevelName: 
     RankTimes:
@@ -252,6 +254,7 @@ MonoBehaviour:
       _keyValues: 
       _keys: 
       _values: []
+    StartRotateDirection: 1
 --- !u!1 &305419214
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +665,14 @@ PrefabInstance:
     - target: {fileID: 6415693559293204915, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
       propertyPath: m_Name
       value: MasterCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415693559293204925, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415693559293204925, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 288
       objectReference: {fileID: 0}
     - target: {fileID: 6415693559293204926, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
       propertyPath: m_Camera
