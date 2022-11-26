@@ -195,14 +195,20 @@ public class StickObject : MonoBehaviour
             _invincibilityTimer = _invincibilityTime;
             DoPositionBounce(collision.GetContact(0).normal);
 
+            ParticleManager.Instance.PlayEffect("Explosion", collision.GetContact(0).point);
             CinemachineShake.Instance.ShakeCamera(1f, 0.25f);
         }
         else if (collision.collider.CompareTag("Spring"))
         {
             if (_springTimer <= 0f)
             {
-                
                 _springTimer = _springTime;
+            }
+
+            Animator[] animators = collision.collider.gameObject.GetComponentsInChildren<Animator>();
+            foreach (Animator anim in animators)
+            {
+                anim.SetTrigger("isBounced");
             }
 
             _rotateDirection = -_rotateDirection;
@@ -248,6 +254,7 @@ public class StickObject : MonoBehaviour
             // when collect trash
             collider.gameObject.GetComponent<CollectableTrash>().OnCollect();
             TrashCollectedEvent?.Invoke(1);
+            ParticleManager.Instance.PlayEffect("Trash", collider.gameObject.transform.position);
         }
     }
 
