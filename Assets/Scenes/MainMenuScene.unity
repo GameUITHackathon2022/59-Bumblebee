@@ -123,23 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &30641968 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 197911316340838012, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
-  m_PrefabInstance: {fileID: 6415693558587117572}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &30641972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30641968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85a8a4178072c8f4f81ee3da6647947e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &56627127
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,23 +488,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1 &869288245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5649269035169439878, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
-  m_PrefabInstance: {fileID: 6415693558587117572}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &869288249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869288245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 992acaf43f68c2c45838943461d8ccbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1141233867
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,10 +840,6 @@ PrefabInstance:
     - target: {fileID: 6415693559293204915, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
       propertyPath: m_Name
       value: MasterCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6415693559293204915, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6415693559293204927, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
       propertyPath: m_Pivot.x

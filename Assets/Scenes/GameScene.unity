@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -199,6 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 141806446}
   _levelSelector: {fileID: 8006289310457257799}
+  _pauser: {fileID: 8006289310457257800}
   _lives: 3
 --- !u!1 &147979787
 GameObject:
@@ -1538,5 +1539,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c410ad899000aab42af080fa9adf98f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8006289310457257800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1596703019386043227, guid: 2893d7a63e3b31148b2f58707a075e0e, type: 3}
+  m_PrefabInstance: {fileID: 8006289310457257798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa1f0b6598188c4ab9734b2d6deb50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

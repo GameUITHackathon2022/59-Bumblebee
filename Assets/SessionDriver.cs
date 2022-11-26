@@ -11,6 +11,7 @@ public class SessionDriver : MonoBehaviour
 {
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private LevelSelector _levelSelector;
+    [SerializeField] private Pauser _pauser;
     [SerializeField] private int _lives = 3;
 
     private LevelController _currentLevel;
@@ -46,7 +47,9 @@ public class SessionDriver : MonoBehaviour
         {
             _playerController.Indicators.AssignIndicator(trash.transform);
         }
-        
+
+        _pauser.SetOn();
+                
         _playerController.StartPlaying(_lives, _currentLevel.TotalTrashCount, _currentLevel.RankTimes);
     }
 
@@ -69,6 +72,8 @@ public class SessionDriver : MonoBehaviour
                 PlayerPrefs.SetFloat($"Level{number}Time", stat.TimePlayed);
             }
             PlayerPrefs.SetInt($"CurrentLevel", number + 1);
+
+            _pauser.SetOff();
 
             GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
             {

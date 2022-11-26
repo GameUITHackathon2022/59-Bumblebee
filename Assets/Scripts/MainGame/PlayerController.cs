@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UITrashCounter _uiTrashCounter;
     [SerializeField] private IndicatorController _indicatorController;
 
+
     private StickObject _stickObject;
 
     private int _maxLiveCount;
@@ -149,6 +150,7 @@ public class PlayerController : MonoBehaviour
         CollectedTrashCount = 0;
         _rankTimes = new Dictionary<LevelRank, float>(rankTimes);
 
+        _touchedGoal = false;
         _playTime = 0f;
         _currentRank = LevelRank.S_RANK;
         _uiTimer.SetRankTimes(_currentRank, _rankTimes[_currentRank]);
