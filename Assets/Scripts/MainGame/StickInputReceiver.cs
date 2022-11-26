@@ -34,10 +34,21 @@ public class StickInputReceiver : MonoBehaviour
     [SerializeField] private bool _showLog;
 
     private InputState _inputState;
+    private bool _controlIsLocked;
 
     public InputState QueryInputState()
     {
         return _inputState;
+    }
+
+    public void LockControl()
+    {
+        _controlIsLocked = false;
+    }
+
+    public void UnlockControl()
+    {
+        _controlIsLocked = true;
     }
 
     private void Update()
