@@ -109,10 +109,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        PlayerDoneCollectingTrashEvent += () =>
-        {
-            Indicators.AssignIndicator(GameObject.Find("EndPosition").transform);
-        };
+
     }
 
     private void Update()

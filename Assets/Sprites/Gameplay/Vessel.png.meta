@@ -203,6 +203,132 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Vessel_2
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 12
+        width: 128
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94d43ad5443ed1847809d10cfd1be786
+      internalID: -1181194835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vessel_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 24
+        width: 128
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a69f1f4808d72f4aa63beeff5933500
+      internalID: -1583149524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vessel_4
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 36
+        width: 128
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e23a2e720a708ea43860457f59e0d0cf
+      internalID: 121529036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vessel_5
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 48
+        width: 128
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b3c412b634c62c4994590445c7bbea1
+      internalID: 1003187412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vessel_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 60
+        width: 128
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7b6ce4ad2e34bb4fbe585770ebcbefd
+      internalID: -213699236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vessel_7
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 72
+        width: 128
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4543b0d0e3084d64bba02bdbc3ea9cf2
+      internalID: 1165078345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -214,9 +340,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Vessel_4: 121529036
+      Vessel_6: -213699236
       Vessel_body: 1167211503
+      Vessel_7: 1165078345
+      Vessel_2: -1181194835
+      Vessel_3: -1583149524
       Vessel_0: 1514748830
       Vessel_1: -93157715
+      Vessel_5: 1003187412
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

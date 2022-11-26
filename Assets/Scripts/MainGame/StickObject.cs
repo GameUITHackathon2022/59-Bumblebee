@@ -195,7 +195,7 @@ public class StickObject : MonoBehaviour
             _invincibilityTimer = _invincibilityTime;
             DoPositionBounce(collision.GetContact(0).normal);
 
-            CinemachineShake.Instance.ShakeCamera(1f, 0.25f) ;
+            CinemachineShake.Instance.ShakeCamera(1f, 0.25f);
         }
         else if (collision.collider.CompareTag("Spring"))
         {
