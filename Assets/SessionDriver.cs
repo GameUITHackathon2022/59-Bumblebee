@@ -27,6 +27,10 @@ public class SessionDriver : MonoBehaviour
         _playerController.PlayerDoneCollectingTrashEvent -= OnPlayerDoneCollectingTrash;
         _playerController.PlayerWinEvent -= OnPlayerWin;
 
+        if (_currentLevel != null)
+        {
+            Destroy(_currentLevel);
+        }
         _currentLevel = null;
     }
 

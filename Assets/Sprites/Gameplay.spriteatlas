@@ -193,6 +193,7 @@ SpriteAtlas:
   - {fileID: 406403716, guid: c55ce353a151fab43be833225ca0dbb5, type: 3}
   - {fileID: -1156327121, guid: c55ce353a151fab43be833225ca0dbb5, type: 3}
   - {fileID: -1484349106, guid: c55ce353a151fab43be833225ca0dbb5, type: 3}
+  - {fileID: 1032298227, guid: c55ce353a151fab43be833225ca0dbb5, type: 3}
   - {fileID: 870469109, guid: c55ce353a151fab43be833225ca0dbb5, type: 3}
   - {fileID: -1425468745, guid: c55ce353a151fab43be833225ca0dbb5, type: 3}
   - {fileID: -1460197743, guid: c55ce353a151fab43be833225ca0dbb5, type: 3}
@@ -380,6 +381,7 @@ SpriteAtlas:
   - Trash_1
   - Trash_15
   - Trash_14
+  - Trash_16
   - Trash_11
   - Trash_10
   - Trash_13

@@ -55,6 +55,7 @@ public class LevelSelector : MonoBehaviour
     private void Start()
     {
         _currentlySelectedLevel = 0;
+        CurrentSelectedLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
         _sessionDriver.StartSession();
         Show();
     }
@@ -104,7 +105,6 @@ public class LevelSelector : MonoBehaviour
             _items[i].Setup(i + 1, name);
         }
 
-        CurrentSelectedLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
         _blockInput = false;
     }
 
