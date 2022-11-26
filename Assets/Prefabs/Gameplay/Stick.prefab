@@ -218,11 +218,11 @@ MonoBehaviour:
   _sprintMultiplier: 1.5
   _doubleSprintMultiplier: 2
   _bounceDistance: 0.5
-  _rotateSpeed: 40
+  _rotateSpeed: 50
   _defaultRotation: 1
-  _bounceTime: 0.07
+  _bounceTime: 0.1
   _invincibilityTime: 0.5
-  _bounceRotation: 35
+  _bounceRotation: 25
   _touchGoalSpeedIncrease: 5
 --- !u!114 &5274534264108664599
 MonoBehaviour:

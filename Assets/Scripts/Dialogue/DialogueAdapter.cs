@@ -165,12 +165,13 @@ namespace Dialogue
             DialogueEnd.Invoke(_dialogue.key);
         }
 
-        private void Init_Enter() {
+        private void INIT_Enter() {
             _currentDialogueIndex = 0;
         }
 
-        private void Typing_Enter()
+        private void TYPING_Enter()
         {
+            Debug.Log("This has been ran");
             string text = _dialogue.GetTextObject(_currentDialogueIndex).content;
             int printDelay = -1;
             this.CleanupCoroutine();
@@ -190,7 +191,7 @@ namespace Dialogue
             this._typeTextCoroutine = this.StartCoroutine(this.TypeTextCharByChar(text));
         }
 
-        private void Typing_Exit()
+        private void TYPING_Exit()
         {
             this.CleanupCoroutine();
 
@@ -216,7 +217,8 @@ namespace Dialogue
 
         private IEnumerator TypeTextCharByChar(string text)
         {
-            this.TextComponent.text = TextTagParser.RemoveCustomTags(text);
+            Debug.Log("Typed text here");
+            this.TextComponent.SetText(TextTagParser.RemoveCustomTags(text));
             for (int numPrintedCharacters = 0; numPrintedCharacters < this._charactersToType.Count; ++numPrintedCharacters)
             {
                 this.TextComponent.maxVisibleCharacters = numPrintedCharacters + 1;
