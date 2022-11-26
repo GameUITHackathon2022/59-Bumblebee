@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UITimer _uiTimer;
     [SerializeField] private UILives _uiLives;
     [SerializeField] private UITrashCounter _uiTrashCounter;
+    [SerializeField] private IndicatorController _indicatorController;
 
     private StickObject _stickObject;
 
@@ -94,6 +95,8 @@ public class PlayerController : MonoBehaviour
             _uiTrashCounter.SetTrash(CollectedTrashCount, TotalTrashCount);
         }
     }
+
+    public IndicatorController Indicators => _indicatorController;
 
     public bool IsDead => _currentLiveCount <= 0;
     public bool LevelConcluded => IsDead || _touchedGoal;

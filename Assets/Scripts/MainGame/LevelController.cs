@@ -16,11 +16,15 @@ public class LevelController : MonoBehaviour
     public string LevelName => _config.LevelName;
     public int StartRotationDirection => _config.StartRotateDirection;
 
+    public Transform GoalTransform => _goalTransform;
+
     private List<CollectableTrash> _allTrashs;
 
     public IDictionary<LevelRank, float> RankTimes => _config.RankTimes;
 
     public int TotalTrashCount => _allTrashs.Count;
+
+    public List<CollectableTrash> AllTrash => _allTrashs;
 
     private void Awake()
     {

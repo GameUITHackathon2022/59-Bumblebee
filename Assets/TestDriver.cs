@@ -31,12 +31,17 @@ public class TestDriver : MonoBehaviour
     {
         _playerController.SpawnStick(_testLevelObject.GetStartPosition(), _testLevelObject.StartRotationDirection);
         _testLevelObject.RefreshStage();
+        _playerController.Indicators.Clean();
+        foreach (var trash in _testLevelObject.AllTrash)
+        {
+            _playerController.Indicators.AssignIndicator(trash.transform);
+        }
+        _playerController.Indicators.AssignIndicator(_testLevelObject.GoalTransform);
         _playerController.StartPlaying(_lives, _testLevelObject.TotalTrashCount, _testLevelObject.RankTimes);
     }
 
     private void OnPlayerDead()
     {
-        Debug.Log("You lost!");
         DOVirtual.DelayedCall(3.5f, () =>
         {
             _playerController.DespawnStick();
@@ -46,13 +51,11 @@ public class TestDriver : MonoBehaviour
 
     private void OnPlayerDoneCollectingTrash()
     {
-        Debug.Log("Yay!");
         _testLevelObject.UnlockGoal();
     }
 
     private void OnPlayerWin()
     {
-        Debug.Log("You won!");
         DOVirtual.DelayedCall(3.5f, () =>
         {
             _playerController.DespawnStick();
