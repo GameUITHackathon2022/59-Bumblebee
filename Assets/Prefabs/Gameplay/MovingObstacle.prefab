@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3582965849160803891}
   - component: {fileID: 1886885252527561733}
   - component: {fileID: 4435213307240619438}
-  m_Layer: 0
+  - component: {fileID: 5897603627496814946}
+  m_Layer: 6
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +102,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!114 &5897603627496814946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2395987142120704297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 601b031d0b5146c48aaa85447b077e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 10
+  _startPosition: {fileID: 1564268256353080211}
+  _endPosition: {fileID: 3381496231232981541}
+  _startDelay: 0.5
+  _playerBlowUpDelay: 1
 --- !u!1 &3898723552877622750
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,8 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564268256353080211}
   - component: {fileID: 6654838258241520510}
-  - component: {fileID: 402888921677330038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MovingObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,15 +289,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &402888921677330038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801016204762582500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 601b031d0b5146c48aaa85447b077e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
