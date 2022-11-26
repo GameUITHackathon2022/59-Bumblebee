@@ -65,12 +65,14 @@ public class SessionDriver : MonoBehaviour
             }
             PlayerPrefs.SetInt($"CurrentLevel", number + 1);
 
-            _currentLevel = null;
-
             GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
             {
                 _levelSelector.EndScreen.Setup(_currentLevel.LevelNumber, stat);
                 _levelSelector.EndScreen.Show();
+
+                Destroy(_currentLevel.gameObject);
+                _currentLevel = null;
+
                 GameManager.Instance.LoadingScreen.Transitor.TransitOut();
             });
         });

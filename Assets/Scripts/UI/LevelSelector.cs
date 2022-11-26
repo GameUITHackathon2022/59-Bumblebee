@@ -105,6 +105,7 @@ public class LevelSelector : MonoBehaviour
 
         CurrentSelectedLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
         _blockInput = false;
+        gameObject.SetActive(true);
     }
 
     public void Hide()
@@ -114,8 +115,15 @@ public class LevelSelector : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        ++CurrentSelectedLevel;
-        LoadLevel(CurrentSelectedLevel);
+        if (CurrentSelectedLevel == _items.Count)
+        {
+            Show();
+        }
+        else
+        {
+            ++CurrentSelectedLevel;
+            LoadLevel(CurrentSelectedLevel);
+        }
     }
 
     public void ReplayLevel()
