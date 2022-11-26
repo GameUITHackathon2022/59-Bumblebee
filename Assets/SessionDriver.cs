@@ -41,7 +41,7 @@ public class SessionDriver : MonoBehaviour
         {
             _playerController.Indicators.AssignIndicator(trash.transform);
         }
-        _playerController.Indicators.AssignIndicator(_currentLevel.GoalTransform);
+        
         _playerController.StartPlaying(_lives, _currentLevel.TotalTrashCount, _currentLevel.RankTimes);
     }
 
@@ -86,6 +86,7 @@ public class SessionDriver : MonoBehaviour
     private void OnPlayerDoneCollectingTrash()
     {
         _currentLevel.UnlockGoal();
+        _playerController.Indicators.AssignIndicator(_currentLevel.GoalTransform);
     }
 
     private void OnPlayerWin()
