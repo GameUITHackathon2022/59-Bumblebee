@@ -71,9 +71,14 @@ public class StickObject : MonoBehaviour
     public event Action HealLivesEvent;
     public event Action LoseLiveEvent;
 
-    private void Start()
+    void Awake()
     {
         _rotateDirection = _defaultRotation;
+    }
+
+    private void Start()
+    {
+       
         _rotationSpeedClone = _rotateSpeed;
 
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Wall"), LayerMask.NameToLayer("Player"), false);
