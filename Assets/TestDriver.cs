@@ -36,9 +36,12 @@ public class TestDriver : MonoBehaviour
 
     private void OnPlayerDead()
     {
-        _playerController.DespawnStick();
         Debug.Log("You lost!");
-        DOVirtual.DelayedCall(1f, () => StartGame());
+        DOVirtual.DelayedCall(3.5f, () =>
+        {
+            _playerController.DespawnStick();
+            StartGame();
+        });
     }
 
     private void OnPlayerDoneCollectingTrash()
@@ -49,6 +52,10 @@ public class TestDriver : MonoBehaviour
     private void OnPlayerWin()
     {
         Debug.Log("You won!");
-        DOVirtual.DelayedCall(1f, () => StartGame());
+        DOVirtual.DelayedCall(3.5f, () =>
+        {
+            _playerController.DespawnStick();
+            StartGame();
+        });
     }
 }

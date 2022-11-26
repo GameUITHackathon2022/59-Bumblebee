@@ -1,3 +1,5 @@
+using ATL;
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,6 +43,8 @@ public class StickObject : MonoBehaviour
     [SerializeField] private float _invincibilityTime = 0.5f;
     [SerializeField] private float _bounceRotation = 35f;
     [SerializeField] private float _touchGoalSpeedIncrease = 5f;
+    [SerializeField] private float _springBoostDeteriorateRate = 15f;
+
 
     private int _rotateDirection;
     private float _bounceTimer;
@@ -48,8 +52,14 @@ public class StickObject : MonoBehaviour
     private float _invincibilityTimer;
     private Vector2 _influenceVector;
 
+    private float _springBoost;
+
     private float _rotationSpeedClone;
     private bool _hasTouchedGoal;
+    private bool _shouldSink;
+    private bool _levelEndable;
+
+    private bool _springBounceLock;
 
     public bool IsStunned => _bounceTimer > 0;
     public bool IsInvincible => _invincibilityTimer > 0;
@@ -81,9 +91,21 @@ public class StickObject : MonoBehaviour
         }
     }
 
-    public void AddBounce(float bounceAngle, float bounceDistance)
+    public void SetSink()
     {
+        _shouldSink = true;
+        PlaySinkAnimation();
+    }
 
+    public void AllowToTouchGoal()
+    {
+        _levelEndable = true;
+    }
+
+    public void AddBounce(float bounceAngle, Vector2 bounceVector)
+    {
+        _springBoost += bounceAngle;
+        //_rigidbody.MovePosition((Vector2)transform.position + bounceVector);
     }
 
     private void ControlPosition(StickInputReceiver.InputState inputState)
@@ -97,7 +119,7 @@ public class StickObject : MonoBehaviour
         }
         else
         {
-            if (_hasTouchedGoal)
+            if (_hasTouchedGoal || _shouldSink)
             {
                 movementVector = Vector2.zero;
             }
@@ -126,7 +148,7 @@ public class StickObject : MonoBehaviour
 
     private void ControlRotation()
     {
-        if (_hasTouchedGoal)
+        if (_hasTouchedGoal || _shouldSink)
         {
             _rotationSpeedClone += _touchGoalSpeedIncrease * Time.fixedDeltaTime;
         }
@@ -138,8 +160,13 @@ public class StickObject : MonoBehaviour
         }
         else
         {
-            _rigidbody.SetRotation(_rigidbody.rotation + _rotateDirection * _rotateSpeed * Time.fixedDeltaTime);
+            var rotationSpeed = _rotationSpeedClone;
+            rotationSpeed += _springBoost;
+
+            _rigidbody.SetRotation(_rigidbody.rotation + _rotateDirection * rotationSpeed * Time.fixedDeltaTime);
         }
+
+        _springBoost = Mathf.Max(0f, _springBoost - _springBoostDeteriorateRate * Time.fixedDeltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -156,16 +183,18 @@ public class StickObject : MonoBehaviour
             _invincibilityTimer = _invincibilityTime;
             DoPositionBounce(collision.GetContact(0).normal);
         }
+        else if (collision.collider.CompareTag("Spring"))
+        {
+            _rotateDirection = -_rotateDirection;
+            AddBounce(collision.collider.GetComponent<SpringObject>().SpringBounceAngle, 
+                collision.collider.GetComponent<SpringObject>().SpringMagnitude * collision.GetContact(0).normal);
+        }
     }
+
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.CompareTag("Goal"))
-        {
-            _hasTouchedGoal = true;
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Wall"), LayerMask.NameToLayer("Player"), true);
-        }
-        else if (collider.CompareTag("Puller"))
+        if (collider.CompareTag("Puller"))
         {
             var puller = collider.gameObject.GetComponentInChildren<StickPuller>();
             if (puller != null)
@@ -180,9 +209,13 @@ public class StickObject : MonoBehaviour
     {
         if (collider.CompareTag("Goal"))
         {
-            _hasTouchedGoal = true;
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Wall"), LayerMask.NameToLayer("Player"), true);
-            ReachedEndGoalEvent?.Invoke();
+            if (_levelEndable)
+            {
+                _hasTouchedGoal = true;
+                Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Wall"), LayerMask.NameToLayer("Player"), true);
+                ReachedEndGoalEvent?.Invoke();
+                PlayGoalAnimation();
+            }
         }
         else if (collider.CompareTag("CollectibleTrash"))
         {
@@ -239,5 +272,15 @@ public class StickObject : MonoBehaviour
     private void DoPositionBounce(Vector2 normal)
     {
         _rigidbody.MovePosition((Vector2)transform.position + normal * _bounceDistance);
+    }
+
+    private void PlayGoalAnimation()
+    {
+        transform.DOScale(0f, 3.5f);
+    }
+
+    private void PlaySinkAnimation()
+    {
+        transform.DOScale(0f, 3.5f);
     }
 }

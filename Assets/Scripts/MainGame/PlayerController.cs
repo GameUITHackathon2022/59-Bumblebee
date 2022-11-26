@@ -151,12 +151,15 @@ public class PlayerController : MonoBehaviour
 
     public void DespawnStick()
     {
-        _stickObject.ReachedEndGoalEvent -= OnReachEndGoal;
-        _stickObject.TrashCollectedEvent -= OnCollectedTrash;
-        _stickObject.LoseLiveEvent -= OnCollidedWithWall;
+        if (_stickObject != null)
+        {
+            _stickObject.ReachedEndGoalEvent -= OnReachEndGoal;
+            _stickObject.TrashCollectedEvent -= OnCollectedTrash;
+            _stickObject.LoseLiveEvent -= OnCollidedWithWall;
 
-        Destroy(_stickObject.gameObject);
-        _stickObject = null;
+            Destroy(_stickObject.gameObject);
+            _stickObject = null;
+        }
     }
 
     public LevelEndStatistics GetLevelEndStatistics()
@@ -200,6 +203,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnPlayerDead()
     {
+        _stickObject.SetSink();
         PlayerDeadEvent?.Invoke();
     }
 
@@ -215,6 +219,7 @@ public class PlayerController : MonoBehaviour
         CollectedTrashCount += count;
         if (CollectedTrashCount >= TotalTrashCount)
         {
+            _stickObject.AllowToTouchGoal();
             PlayerDoneCollectingTrashEvent?.Invoke();
         }
     }
