@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: c88710d8973a73745979f6fd43baf5f0, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -2073945657, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
+  - {fileID: -1300898329, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
+  - {fileID: 1661851456, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
+  - {fileID: 238057468, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
+  - {fileID: 1501505539, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
+  - {fileID: 21300000, guid: 869178e2b137855478e296de86a8f5e6, type: 3}
+  - {fileID: 21300000, guid: a15f7344ec832af4d969eb954f8d2b8e, type: 3}
+  - {fileID: -1891952643, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 264026623, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 1058048966, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 218784517, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 1481021909, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 1973240094, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 1340095083, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 441390189, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 334280983, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 1156087092, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: -361581867, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: -89015124, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: -1905654925, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 738429003, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 21300000, guid: c27bb9b57424a61429470154b7ec05ca, type: 3}
+  - {fileID: 21300000, guid: 7e564d8606b45a24ab8b950b9ccd74ab, type: 3}
+  - {fileID: 21300000, guid: 3325c44c802b40f4ba3c19e07ec08cc6, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - title
+  - stage_failed
+  - level_select
+  - tutorial
+  - stage_cleared
+  - transition_horizontal_2
+  - BubbleChat
+  - rank_a
+  - rank_b
+  - rank_c
+  - heart_empty
+  - rank_s
+  - panel
+  - heart_full
+  - level_selected
+  - button_select
+  - level_locked
+  - button_desect
+  - level_normal
+  - arrow_big
+  - arrow_small
+  - transition_horizontal_1
+  - transition_vertical_2
+  - transition_vertical_1
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0

@@ -14,18 +14,11 @@ public class IndicatorController : MonoBehaviour
     public float Width => _indicatorBounds.rect.width;
     public float Height => _indicatorBounds.rect.height;
 
-    public void AssignIndicator(Transform transformToIndicate)
+    public void AssignIndicator(Transform transformToIndicate, bool bigArrow = false)
     {
         var go = Instantiate(_indicatorPrefab, _indicatorBounds);
         var indicator = go.GetComponent<Indicator>();
-        if (transformToIndicate.TryGetComponent<CollectableTrash>(out var trash))
-        {
-            indicator.SetUp(trash.GetComponent<SpriteRenderer>().sprite, false);
-        }
-        else if (transformToIndicate.TryGetComponent<SpriteRenderer>(out var rdr))
-        {
-            indicator.SetUp(rdr.sprite, true);
-        }
+        indicator.SetUp(bigArrow);
 
         indicator.transform.position = transformToIndicate.position;
         _watchedTransforms.Add(transformToIndicate, indicator);
@@ -47,7 +40,7 @@ public class IndicatorController : MonoBehaviour
         Transform nearestObject = null;
         foreach (var watchedTransform in _watchedTransforms)
         {
-            if (Vector2.Distance(_centerTransform.position, watchedTransform.Key.position) < nearestDist)
+            if (watchedTransform.Key != null && Vector2.Distance(_centerTransform.position, watchedTransform.Key.position) < nearestDist)
             {
                 nearestDist = Vector2.Distance(_centerTransform.position, watchedTransform.Key.position);
                 nearestObject = watchedTransform.Key;

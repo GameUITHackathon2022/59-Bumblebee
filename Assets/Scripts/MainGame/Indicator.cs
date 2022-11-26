@@ -7,16 +7,14 @@ using UnityEngine.UI;
 public class Indicator : MonoBehaviour
 {
     [SerializeField] private Transform _spriteHost;
-    [SerializeField] private Image _itemSprite;
     [SerializeField] private Image _arrow;
     [SerializeField] private Sprite _smallArrow;
     [SerializeField] private Sprite _bigArrow;
 
     private Tween _animTween;
 
-    public void SetUp(Sprite itemSprite, bool bigArrow=false)
+    public void SetUp(bool bigArrow=false)
     {
-        _itemSprite.sprite = itemSprite;
         _arrow.sprite = bigArrow ? _bigArrow : _smallArrow;
     }
 

@@ -41,7 +41,7 @@ public class LevelSelectorItem : MonoBehaviour
         else if (rankInt != -1)
         {
             var rank = (LevelRank)rankInt;
-            var time = PlayerPrefs.GetFloat($"Level{number}Time", 0f);
+            var time = PlayerPrefs.GetFloat($"Level{number}Time", float.PositiveInfinity);
             _time.text = FormatTime(time);
             _rank.sprite = _rankSprites[rankInt];
             _rank.color = Color.white;

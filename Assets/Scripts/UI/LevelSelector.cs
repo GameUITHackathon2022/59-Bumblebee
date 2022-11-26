@@ -25,28 +25,33 @@ public class LevelSelector : MonoBehaviour
         get { return _currentlySelectedLevel; }
         set
         {
-            value = Mathf.Clamp(value, 1, _items.Count);
-            while (_items[value - 1].IsLocked && value > 1)
+            value = Mathf.Min(value, _items.Count);
+            for (int i = value; i > 1; --i)
             {
-                --value;
+                if (!_items[i - 1].IsLocked)
+                {
+                    value = i;
+                    break;
+                }
             }
 
             if (_currentlySelectedLevel != value)
             {
-                for (int i = 0; i < _items.Count; i++)
+                for (int i = 1; i <= _items.Count; i++)
                 {
-                    if (i == _currentlySelectedLevel - 1)
+                    if (i == value)
                     {
-                        _items[i].Select();
+                        _items[i - 1].Select();
                     }
                     else if (!_items[i].IsLocked)
                     {
-                        _items[i].Deselect();
+                        _items[i - 1].Deselect();
                     }
                 }
             }
 
             _currentlySelectedLevel = value;
+            PlayerPrefs.SetInt("CurrentLevel", _currentlySelectedLevel);
             Debug.Log(_currentlySelectedLevel);
         }
     }
@@ -142,7 +147,7 @@ public class LevelSelector : MonoBehaviour
             operation.Completed += (handle) =>
             {
                 _sessionDriver.StartLevel(handle.Result.GetComponent<LevelController>());
-                GameManager.Instance.LoadingScreen.Transitor.TransitOut();
+               DOVirtual.DelayedCall(0.5f, () => GameManager.Instance.LoadingScreen.Transitor.TransitOut());
             };
         });
     }

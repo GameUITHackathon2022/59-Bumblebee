@@ -277,6 +277,8 @@ MonoBehaviour:
   _winLossImage: {fileID: 2370177651285684887}
   _winSprite: {fileID: 1501505539, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
   _lossSprite: {fileID: -1300898329, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
+  _buttonHelpWin: {fileID: 6515506511556788919}
+  _buttonHelpLoss: {fileID: 3481081717591650444}
   _rankImage: {fileID: 6186319575855553169}
   _rankSprites:
   - {fileID: 1481021909, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
@@ -813,6 +815,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8081119319146659899, guid: b50d5f641a1037d468c2a40887dd8f6c, type: 3}
   m_PrefabInstance: {fileID: 3048476880838509199}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6515506511556788919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8081119319146659896, guid: b50d5f641a1037d468c2a40887dd8f6c, type: 3}
+  m_PrefabInstance: {fileID: 3048476880838509199}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4641714043611033780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -938,6 +945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b50d5f641a1037d468c2a40887dd8f6c, type: 3}
+--- !u!1 &3481081717591650444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8081119319146659896, guid: b50d5f641a1037d468c2a40887dd8f6c, type: 3}
+  m_PrefabInstance: {fileID: 4641714043611033780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3481081717591650447 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8081119319146659899, guid: b50d5f641a1037d468c2a40887dd8f6c, type: 3}
