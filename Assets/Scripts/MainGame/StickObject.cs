@@ -182,6 +182,7 @@ public class StickObject : MonoBehaviour
     {
         if (collision.collider.CompareTag("Wall"))
         {
+            // hit wall/ object
             if (_invincibilityTimer <= 0f)
             {
                 LoseLiveEvent?.Invoke();
@@ -203,6 +204,7 @@ public class StickObject : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
+        // when pulled in the goal
         if (collider.CompareTag("Puller"))
         {
             var puller = collider.gameObject.GetComponentInChildren<StickPuller>();
@@ -222,6 +224,7 @@ public class StickObject : MonoBehaviour
     {
         if (collider.CompareTag("Goal"))
         {
+            // when stayed inside goal
             if (_levelEndable)
             {
                 _hasTouchedGoal = true;
@@ -232,6 +235,7 @@ public class StickObject : MonoBehaviour
         }
         else if (collider.CompareTag("CollectibleTrash"))
         {
+            // when collect trash
             collider.gameObject.GetComponent<CollectableTrash>().OnCollect();
             TrashCollectedEvent?.Invoke(1);
         }
