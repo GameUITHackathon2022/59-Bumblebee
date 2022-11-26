@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1161e22e5da7fc34998698b0887fab8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _centerPullMagnitude: 10
-  _outerPullMagnitude: 3
+  _centerPullMagnitude: 17
+  _outerPullMagnitude: 5
   _centerRadius: 0.1
   _collider: {fileID: 1391654825074201363}
 --- !u!1 &1391654825101094036
