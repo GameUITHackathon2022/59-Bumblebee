@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1886885252527561733}
   - component: {fileID: 4435213307240619438}
   - component: {fileID: 5897603627496814946}
+  - component: {fileID: 6640662494126867786}
   m_Layer: 6
   m_Name: Obstacle
   m_TagString: Wall
@@ -75,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1696131000, guid: c55ce353a151fab43be833225ca0dbb5, type: 3}
+  m_Sprite: {fileID: 1519892519, guid: cee8eaa88b6b3b64d92bba37fa72f6db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.78, y: 0.76}
+  m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -119,6 +120,21 @@ MonoBehaviour:
   _endPosition: {fileID: 3381496231232981541}
   _startDelay: 0.5
   _playerBlowUpDelay: 1
+--- !u!111 &6640662494126867786
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2395987142120704297}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: eefafbcae450d16408578d7b56d8eadf, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3898723552877622750
 GameObject:
   m_ObjectHideFlags: 0
