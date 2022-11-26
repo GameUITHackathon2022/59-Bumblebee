@@ -168,7 +168,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loadingScreen: {fileID: 1457996892}
-  _levelObjects: []
+  _levelObjects:
+  - m_AssetGUID: 89044b877877c4747a4691613d1034ea
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: ebfcca1d48c69884b9f9c99c14dcd48f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 483e4be6fbfcac548aa26a424b4825a1
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 95d4a0938a8656a4ea014d9edf86a0c7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 4fa1956d2e92d8f46a28b2fc0295232d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _levelNames:
+  - A
+  - B
+  - C
+  - D
+  - E
 --- !u!1 &305419214
 GameObject:
   m_ObjectHideFlags: 0

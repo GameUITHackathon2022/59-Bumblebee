@@ -60,6 +60,8 @@ MonoBehaviour:
   - {fileID: 4753035946632968747}
   - {fileID: 1489386908432440060}
   - {fileID: 7445461560689402586}
+  _sessionDriver: {fileID: 0}
+  _endScreen: {fileID: 0}
 --- !u!1 &7113627631725895998
 GameObject:
   m_ObjectHideFlags: 0
