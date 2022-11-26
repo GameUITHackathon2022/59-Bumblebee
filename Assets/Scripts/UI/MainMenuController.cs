@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool _blockInput;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (_blockInput)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            _blockInput = true;
+            Application.Quit();
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        { 
+            GameManager.Instance.LoadingScreen.LoadGameScene();
+            _blockInput = true;
+            return;
+        }
     }
 }
