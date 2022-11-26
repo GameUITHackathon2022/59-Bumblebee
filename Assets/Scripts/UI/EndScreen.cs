@@ -15,8 +15,12 @@ public class EndScreen : MonoBehaviour
 	[SerializeField] private Image _winLossImage;
 	[SerializeField] private Sprite _winSprite;
 	[SerializeField] private Sprite _lossSprite;
+	[SerializeField] private GameObject _buttonHelpWin;
+	[SerializeField] private GameObject _buttonHelpLoss;
 	[SerializeField] private Image _rankImage;
     [SerializeField] private List<Sprite> _rankSprites;
+
+    private bool _winState;
 
     private void Start()
     {
@@ -25,20 +29,24 @@ public class EndScreen : MonoBehaviour
 
     public void Setup(int level, PlayerController.LevelEndStatistics stat)
     {
-        var won = stat.PlayerWon;
-        if (won)
+        _winState = stat.PlayerWon;
+        if (_winState)
         {
             _winLossImage.sprite = _winSprite;
+            _buttonHelpWin.SetActive(true);
+            _buttonHelpLoss.SetActive(false);
         }
         else
         {
             _winLossImage.sprite = _lossSprite;
+            _buttonHelpWin.SetActive(false);
+            _buttonHelpLoss.SetActive(true);
         }
 
         _statTitles.text = $"Time:\nBest Time:\nCollected:";
         _statValues.text = $"{FormatTime(stat.TimePlayed)}\n{FormatTime(PlayerPrefs.GetFloat($"Level{level}Time", 0))}\n{stat.TrashCollected}/{stat.TotalTrash}";
 
-        if (won)
+        if (_winState)
         {
             _rankImage.sprite = _rankSprites[(int)stat.Rank];
             _rankImage.color = Color.white;
@@ -70,13 +78,9 @@ public class EndScreen : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && _winState)
         {
-            GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
-            {
-                _levelSelector.LoadNextLevel();
-                GameManager.Instance.LoadingScreen.Transitor.TransitOut();
-            });
+            _levelSelector.LoadNextLevel();
             _blockInput = true;
             return;
         }
@@ -85,6 +89,7 @@ public class EndScreen : MonoBehaviour
         {
             GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
             {
+                Hide();
                 _levelSelector.Show();
                 GameManager.Instance.LoadingScreen.Transitor.TransitOut();
             });
@@ -94,12 +99,7 @@ public class EndScreen : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
-            {
-                _levelSelector.ReplayLevel();
-                GameManager.Instance.LoadingScreen.Transitor.TransitOut();
-            });
-            _blockInput = true;
+            _levelSelector.ReplayLevel();
             return;
         }
     }

@@ -27,6 +27,10 @@ public class SessionDriver : MonoBehaviour
         _playerController.PlayerDoneCollectingTrashEvent -= OnPlayerDoneCollectingTrash;
         _playerController.PlayerWinEvent -= OnPlayerWin;
 
+        if (_currentLevel != null)
+        {
+            Destroy(_currentLevel);
+        }
         _currentLevel = null;
     }
 
@@ -55,7 +59,7 @@ public class SessionDriver : MonoBehaviour
             var number = _currentLevel.LevelNumber;
             var rankInt = stat.PlayerWon ? (int)stat.Rank : -1;
 
-            var oldTime = PlayerPrefs.GetFloat($"Level{number}Time", 0f);
+            var oldTime = PlayerPrefs.GetFloat($"Level{number}Time", float.PositiveInfinity);
 
             PlayerPrefs.SetInt($"Level{number}Rank", rankInt);
             PlayerPrefs.SetInt($"Level{number + 1}Locked", stat.PlayerWon ? 0 : 1);
@@ -65,12 +69,14 @@ public class SessionDriver : MonoBehaviour
             }
             PlayerPrefs.SetInt($"CurrentLevel", number + 1);
 
-            _currentLevel = null;
-
             GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
             {
                 _levelSelector.EndScreen.Setup(_currentLevel.LevelNumber, stat);
                 _levelSelector.EndScreen.Show();
+
+                Destroy(_currentLevel.gameObject);
+                _currentLevel = null;
+
                 GameManager.Instance.LoadingScreen.Transitor.TransitOut();
             });
         });
@@ -84,7 +90,7 @@ public class SessionDriver : MonoBehaviour
     private void OnPlayerDoneCollectingTrash()
     {
         _currentLevel.UnlockGoal();
-        _playerController.Indicators.AssignIndicator(_currentLevel.GoalTransform);
+        _playerController.Indicators.AssignIndicator(_currentLevel.GoalTransform, true);
     }
 
     private void OnPlayerWin()
