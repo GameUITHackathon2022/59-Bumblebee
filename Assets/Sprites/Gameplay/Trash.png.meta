@@ -476,6 +476,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Trash_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21fe8c355d8edc2408b592fc4ed71ea9
+      internalID: 1032298227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -500,6 +521,7 @@ TextureImporter:
       Trash_7: 1184475503
       Trash_13: -1460197743
       Trash_14: -1484349106
+      Trash_16: 1032298227
       Trash_12: -1696131000
       Trash_10: -1425468745
       Trash_4: -1122485808
