@@ -151,6 +151,7 @@ public class PlayerController : MonoBehaviour
 
         _playTime = 0f;
         _currentRank = LevelRank.S_RANK;
+        _uiTimer.SetRankTimes(_currentRank, _rankTimes[_currentRank]);
 
         _isInPlay = true;
     }

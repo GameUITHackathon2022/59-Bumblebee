@@ -80,12 +80,7 @@ public class EndScreen : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z) && _winState)
         {
-            GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
-            {
-                Hide();
-                _levelSelector.LoadNextLevel();
-                GameManager.Instance.LoadingScreen.Transitor.TransitOut();
-            });
+            _levelSelector.LoadNextLevel();
             _blockInput = true;
             return;
         }
@@ -104,13 +99,7 @@ public class EndScreen : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
-            {
-                Hide();
-                _levelSelector.ReplayLevel();
-                GameManager.Instance.LoadingScreen.Transitor.TransitOut();
-            });
-            _blockInput = true;
+            _levelSelector.ReplayLevel();
             return;
         }
     }

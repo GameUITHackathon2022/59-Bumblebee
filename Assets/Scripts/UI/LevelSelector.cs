@@ -25,14 +25,10 @@ public class LevelSelector : MonoBehaviour
         get { return _currentlySelectedLevel; }
         set
         {
-            value = Mathf.Min(value, _items.Count);
-            for (int i = value; i > 1; --i)
+            value = Mathf.Clamp(value, 1, _items.Count);
+            while (value > 1 && _items[value - 1].IsLocked)
             {
-                if (!_items[i - 1].IsLocked)
-                {
-                    value = i;
-                    break;
-                }
+                --value;
             }
 
             if (_currentlySelectedLevel != value)
@@ -43,7 +39,7 @@ public class LevelSelector : MonoBehaviour
                     {
                         _items[i - 1].Select();
                     }
-                    else if (!_items[i].IsLocked)
+                    else if (!_items[i - 1].IsLocked)
                     {
                         _items[i - 1].Deselect();
                     }
@@ -100,7 +96,7 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
-    public void Show()
+    public void Refresh()
     {
         for (int i = 0; i < _items.Count; ++i)
         {
@@ -110,6 +106,11 @@ public class LevelSelector : MonoBehaviour
 
         CurrentSelectedLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
         _blockInput = false;
+    }
+
+    public void Show()
+    {
+        Refresh();
         gameObject.SetActive(true);
     }
 
@@ -120,11 +121,8 @@ public class LevelSelector : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (CurrentSelectedLevel == _items.Count)
-        {
-            Show();
-        }
-        else
+        Refresh();
+        if (CurrentSelectedLevel != _items.Count)
         {
             ++CurrentSelectedLevel;
             LoadLevel(CurrentSelectedLevel);
@@ -133,6 +131,7 @@ public class LevelSelector : MonoBehaviour
 
     public void ReplayLevel()
     {
+        Refresh();
         LoadLevel(CurrentSelectedLevel);
     }
 
@@ -142,7 +141,8 @@ public class LevelSelector : MonoBehaviour
 
         GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
         {
-            gameObject.SetActive(false);
+            Hide();
+            _endScreen.Hide();
             var operation = Addressables.InstantiateAsync(levelAsset);
             operation.Completed += (handle) =>
             {
