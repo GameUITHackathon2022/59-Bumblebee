@@ -36,7 +36,7 @@ public class TestDriver : MonoBehaviour
         {
             _playerController.Indicators.AssignIndicator(trash.transform);
         }
-        _playerController.Indicators.AssignIndicator(_testLevelObject.GoalTransform);
+        // _playerController.Indicators.AssignIndicator(_testLevelObject.GoalTransform);
         _playerController.StartPlaying(_lives, _testLevelObject.TotalTrashCount, _testLevelObject.RankTimes);
     }
 
