@@ -39,11 +39,16 @@ public class StickObject : MonoBehaviour
     [SerializeField] private float _bounceTime = 0.2f;
     [SerializeField] private float _invincibilityTime = 0.5f;
     [SerializeField] private float _bounceRotation = 35f;
+    [SerializeField] private float _touchGoalSpeedIncrease = 5f;
 
     private int _rotateDirection;
     private float _bounceTimer;
     private int _bounceContactCode;
     private float _invincibilityTimer;
+    private Vector2 _influenceVector;
+
+    private float _rotationSpeedClone;
+    private bool _hasTouchedGoal;
 
     public bool IsStunned => _bounceTimer > 0;
     public bool IsInvincible => _invincibilityTimer > 0;
@@ -51,6 +56,9 @@ public class StickObject : MonoBehaviour
     private void Start()
     {
         _rotateDirection = _defaultRotation;
+        _rotationSpeedClone = _rotateSpeed;
+
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Wall"), LayerMask.NameToLayer("Player"), false);
     }
 
     private void FixedUpdate()
@@ -65,30 +73,56 @@ public class StickObject : MonoBehaviour
         }
     }
 
+    public void AddBounce(float bounceAngle, float bounceDistance)
+    {
+
+    }
+
     private void ControlPosition(StickInputReceiver.InputState inputState)
     {
+        var movementVector = Vector2.zero;
+
         if (IsStunned)
         {
-            _rigidbody.velocity = Vector2.zero;
+            movementVector = Vector2.zero;
             return;
         }
-        var speedMod = 1f;
-        if (inputState.SprintModifierMode == 1)
+        else
         {
-            speedMod = _sprintMultiplier;
-        }
-        else if (inputState.SprintModifierMode == 2)
-        {
-            speedMod = _doubleSprintMultiplier;
+            if (_hasTouchedGoal)
+            {
+                movementVector = Vector2.zero;
+            }
+            else
+            {
+                var speedMod = 1f;
+                if (inputState.SprintModifierMode == 1)
+                {
+                    speedMod = _sprintMultiplier;
+                }
+                else if (inputState.SprintModifierMode == 2)
+                {
+                    speedMod = _doubleSprintMultiplier;
+                }
+
+                movementVector = inputState.MovementVector * _speed * speedMod * Time.fixedDeltaTime;
+            }
         }
 
-        var movementVector = inputState.MovementVector * _speed * speedMod * Time.fixedDeltaTime;
+        // Add influence
+        movementVector += _influenceVector;
+        _influenceVector = Vector2.zero;
 
         _rigidbody.velocity = movementVector;
     }
 
     private void ControlRotation()
     {
+        if (_hasTouchedGoal)
+        {
+            _rotationSpeedClone += _touchGoalSpeedIncrease * Time.fixedDeltaTime;
+        }
+
         if (_bounceTimer > 0)
         {
             _rigidbody.SetRotation(_rigidbody.rotation + _bounceContactCode * (_bounceRotation / _bounceTime) * Time.fixedDeltaTime);
@@ -111,15 +145,22 @@ public class StickObject : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.CompareTag("Goal"))
         {
-
+            _hasTouchedGoal = true;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Wall"), LayerMask.NameToLayer("Player"), true);
+            Debug.Log("Touched goal, please end level.");
         }
         else if (collider.CompareTag("Puller"))
         {
-
+            var puller = collider.gameObject.GetComponentInChildren<StickPuller>();
+            if (puller != null)
+            {
+                var pullVect = puller.GetPullVector(transform.position);
+                _influenceVector = pullVect;
+            }
         }
     }
 
