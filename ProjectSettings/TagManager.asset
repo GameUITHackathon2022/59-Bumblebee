@@ -8,6 +8,7 @@ TagManager:
   - Goal
   - Puller
   - CollectibleTrash
+  - Spring
   layers:
   - Default
   - TransparentFX
