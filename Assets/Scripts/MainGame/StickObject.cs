@@ -203,6 +203,10 @@ public class StickObject : MonoBehaviour
                 _influenceVector = pullVect;
             }
         }
+        else if (collider.CompareTag("HealPad"))
+        {
+            HealLivesEvent?.Invoke();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
