@@ -43,7 +43,7 @@ public class StickObject : MonoBehaviour
     [SerializeField] private float _bounceRotation = 35f;
     [SerializeField] private float _touchGoalSpeedIncrease = 5f;
     [SerializeField] private float _springBoostDeteriorateRate = 15f;
-    [SerializeField] private float _springTime = 15f;
+    private float _springTime = 1f;
 
 
     private int _rotateDirection;
@@ -94,6 +94,11 @@ public class StickObject : MonoBehaviour
         if (_invincibilityTimer > 0)
         {
             _invincibilityTimer = Mathf.Max(0f, _invincibilityTimer - Time.fixedDeltaTime);
+        }
+
+        if (_springTimer > 0)
+        {
+            _springTimer = Mathf.Max(0f, _springTimer - Time.fixedDeltaTime);
         }
     }
 
@@ -197,7 +202,6 @@ public class StickObject : MonoBehaviour
 
             ParticleManager.Instance.PlayEffect("Explosion", collision.GetContact(0).point);
             CinemachineShake.Instance.ShakeCamera(1f, 0.25f);
-            Debug.Log("AUDIO MANAGER PLAY SOUND EFFECT!");
             AudioManager.PlaySound(Sounds.WallHit);
         }
         else if (collision.collider.CompareTag("Spring"))
@@ -205,19 +209,18 @@ public class StickObject : MonoBehaviour
             if (_springTimer <= 0f)
             {
                 _springTimer = _springTime;
+                Animator[] animators = collision.collider.gameObject.GetComponentsInChildren<Animator>();
+                foreach (Animator anim in animators)
+                {
+                    anim.SetTrigger("isBounced");
+                }
+
+                AudioManager.PlaySound(Sounds.Spring);
+
+                _rotateDirection = -_rotateDirection;
+                AddBounce(collision.collider.GetComponent<SpringObject>().SpringBounceAngle,
+                    collision.collider.GetComponent<SpringObject>().SpringMagnitude * collision.GetContact(0).normal);
             }
-
-            Animator[] animators = collision.collider.gameObject.GetComponentsInChildren<Animator>();
-            foreach (Animator anim in animators)
-            {
-                anim.SetTrigger("isBounced");
-            }
-
-            AudioManager.PlaySound(Sounds.Spring);
-
-            _rotateDirection = -_rotateDirection;
-            AddBounce(collision.collider.GetComponent<SpringObject>().SpringBounceAngle,
-                collision.collider.GetComponent<SpringObject>().SpringMagnitude * collision.GetContact(0).normal);
         }
     }
 
@@ -233,7 +236,7 @@ public class StickObject : MonoBehaviour
                 var pullVect = puller.GetPullVector(transform.position);
                 _influenceVector = pullVect;
             }
-            AudioManager.PlaySound(Sounds.Button3);
+            
         }
         else if (collider.CompareTag("HealPad"))
         {
