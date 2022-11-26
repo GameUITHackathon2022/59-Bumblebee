@@ -10,6 +10,6 @@ public class UITrashCounter : MonoBehaviour
 
     public void SetTrash(int currentCollected, int totalCount)
     {
-        _text.text = $"{currentCollected}/{totalCount}";
+        _text.text = $"{currentCollected:00}/{totalCount:00}";
     }
 }
