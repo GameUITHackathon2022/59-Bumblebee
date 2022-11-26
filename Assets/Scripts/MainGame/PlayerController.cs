@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
         _stickObject.ReachedEndGoalEvent += OnReachEndGoal;
         _stickObject.TrashCollectedEvent += OnCollectedTrash;
         _stickObject.LoseLiveEvent += OnCollidedWithWall;
+        _stickObject.HealLivesEvent += OnHeal;
 
         return _stickObject;
     }
@@ -156,6 +157,7 @@ public class PlayerController : MonoBehaviour
             _stickObject.ReachedEndGoalEvent -= OnReachEndGoal;
             _stickObject.TrashCollectedEvent -= OnCollectedTrash;
             _stickObject.LoseLiveEvent -= OnCollidedWithWall;
+            _stickObject.HealLivesEvent -= OnHeal;
 
             Destroy(_stickObject.gameObject);
             _stickObject = null;
@@ -227,5 +229,11 @@ public class PlayerController : MonoBehaviour
     private void OnCollidedWithWall()
     {
         CurrentLiveCount--;
+    }
+
+    private void OnHeal()
+    {
+        CurrentLiveCount = MaxLiveCount;
+        Debug.Log("aa");
     }
 }
