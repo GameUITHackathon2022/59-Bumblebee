@@ -796,6 +796,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MasterCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6415693559293204915, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6415693559293204927, guid: b4ea49a2315945840a2a6150b5acebfe, type: 3}
       propertyPath: m_Pivot.x
       value: 0
