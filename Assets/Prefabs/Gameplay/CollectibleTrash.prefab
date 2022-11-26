@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 444866923802547122}
   - component: {fileID: 4517996702616559080}
   - component: {fileID: 2365784948512887069}
+  - component: {fileID: 3519358358093445719}
   m_Layer: 0
   m_Name: CollectibleTrash
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4b69375874ffe8a40b90126093ed4c81, type: 3}
+  m_Sprite: {fileID: -1696131000, guid: c55ce353a151fab43be833225ca0dbb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d0ed0b7a740684db8e868b9921f9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controllers:
+  - {fileID: 9100000, guid: 8e5291c3f1662c94da07365390b6d1cc, type: 2}
+  - {fileID: 22100000, guid: 5ab26331845c6c44d8aa1dcadb26c7ee, type: 2}
+  - {fileID: 22100000, guid: 44aea1aba11d0bd4c9996e81ae9f2d8a, type: 2}
+  - {fileID: 22100000, guid: c8a167e0df66dc249bd6c1db63f1beaf, type: 2}
+  _animator: {fileID: 3519358358093445719}
 --- !u!58 &2365784948512887069
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -114,3 +121,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &3519358358093445719
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206840132905917968}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e5291c3f1662c94da07365390b6d1cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
