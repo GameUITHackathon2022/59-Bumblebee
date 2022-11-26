@@ -44,6 +44,7 @@ SpriteAtlas:
   - {fileID: 1661851456, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
   - {fileID: 238057468, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
   - {fileID: 1501505539, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
+  - {fileID: 21300000, guid: 501982a28b3745442b02840f09448b1f, type: 3}
   - {fileID: 21300000, guid: e7f34fb2ab0fce546bcb23e10919cdf2, type: 3}
   - {fileID: 21300000, guid: 869178e2b137855478e296de86a8f5e6, type: 3}
   - {fileID: 21300000, guid: a15f7344ec832af4d969eb954f8d2b8e, type: 3}
@@ -63,6 +64,7 @@ SpriteAtlas:
   - {fileID: 738429003, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
   - {fileID: 21300000, guid: 6f9b9b7500d6f6e46993d09b21da967c, type: 3}
   - {fileID: 21300000, guid: c27bb9b57424a61429470154b7ec05ca, type: 3}
+  - {fileID: 21300000, guid: ed3b90064973abd42bfef386a750378f, type: 3}
   - {fileID: 21300000, guid: 7e564d8606b45a24ab8b950b9ccd74ab, type: 3}
   - {fileID: 21300000, guid: e6dd7a27b3dd16f44869acea3d24f343, type: 3}
   - {fileID: 21300000, guid: 58760538a892ba0408eab0ee7fb12d59, type: 3}
@@ -75,6 +77,7 @@ SpriteAtlas:
   - level_select
   - tutorial
   - stage_cleared
+  - UIT-2022_Design_Logo
   - level_5
   - transition_horizontal_2
   - BubbleChat
@@ -94,6 +97,7 @@ SpriteAtlas:
   - arrow_small
   - BG_Menu
   - transition_horizontal_1
+  - Icon
   - transition_vertical_2
   - level_2
   - level_3

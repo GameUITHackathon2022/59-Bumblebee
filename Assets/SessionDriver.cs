@@ -38,6 +38,7 @@ public class SessionDriver : MonoBehaviour
 
     public void StartLevel(LevelController level)
     {
+        AudioManager.PlayMusic(Music.Game);
         _currentLevel = level;
 
         _playerController.SpawnStick(_currentLevel.GetStartPosition(), _currentLevel.StartRotationDirection);

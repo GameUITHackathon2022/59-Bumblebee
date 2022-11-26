@@ -16,12 +16,6 @@ public class LoadingScreen : MonoBehaviour
         if (scene.name == "MainMenuScene")
         {
             AudioManager.PlayMusic(Music.Intro);
-        } else if (scene.name == "LevelSelect")
-        {
-            AudioManager.PlayMusic(Music.LevelSelect);
-        } else if (scene.name == "GameScene")
-        {
-            AudioManager.PlayMusic(Music.Game);
         }
     }
 
@@ -59,7 +53,6 @@ public class LoadingScreen : MonoBehaviour
             {
                 _screenTransitor.TransitOut();
                 AudioManager.PlayMusic(Music.Game);
-                Debug.Log("AUDIO MANAGER PLAY MUSIC!");
             };
         });
     }

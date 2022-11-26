@@ -111,6 +111,7 @@ public class LevelSelector : MonoBehaviour
     public void Show()
     {
         Refresh();
+        JSAM.AudioManager.PlayMusic(JSAM.Music.LevelSelect);
         gameObject.SetActive(true);
     }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d15ae218647a2d4f85e14306846c10c, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
-  file: {fileID: 8300000, guid: ca990f9c6bc86d14faeb5ef3fc258c69, type: 3}
+  file: {fileID: 8300000, guid: ec3d7329a11076c4b8763647956be085, type: 3}
   files: []
   useLibrary: 0
   neverRepeat: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   bypassEffects: 0
   bypassListenerEffects: 0
   bypassReverbZones: 0
-  safeName: 
+  safeName: Heal
   chorusFilter:
     enabled: 0
     dryMix: 0

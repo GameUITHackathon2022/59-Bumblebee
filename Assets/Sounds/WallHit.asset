@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d15ae218647a2d4f85e14306846c10c, type: 3}
   m_Name: WallHit
   m_EditorClassIdentifier: 
-  file: {fileID: 8300000, guid: f35c236fc97db4309b80d8b34da60785, type: 3}
+  file: {fileID: 8300000, guid: 5e3948258fed5ad4d81d5bfc5a2dfa50, type: 3}
   files: []
   useLibrary: 0
   neverRepeat: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   bypassEffects: 0
   bypassListenerEffects: 0
   bypassReverbZones: 0
-  safeName: 
+  safeName: WallHit
   chorusFilter:
     enabled: 0
     dryMix: 0

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 using System.Collections.Generic;
+using JSAM;
 
 public class EndScreen : MonoBehaviour
 {
@@ -63,7 +64,7 @@ public class EndScreen : MonoBehaviour
 	{
         gameObject.SetActive(true);
         _blockInput = false;
-	}
+    }
 
     public void Hide()
     {

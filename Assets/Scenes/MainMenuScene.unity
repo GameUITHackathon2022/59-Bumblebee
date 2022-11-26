@@ -497,8 +497,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1141233868}
-  - component: {fileID: 1141233870}
   - component: {fileID: 1141233869}
+  - component: {fileID: 1141233870}
   m_Layer: 0
   m_Name: AudioPlayerMusic
   m_TagString: Untagged
@@ -541,7 +541,7 @@ MonoBehaviour:
   musicFadeOutTime: 0
   loopMode: 1
   music: {fileID: 11400000, guid: 9b241ad451ec1284aa44ebb22bb265e4, type: 2}
-  onStart: 0
+  onStart: 1
   onEnable: 0
   onDisable: 0
   onDestroy: 2
@@ -798,11 +798,11 @@ MonoBehaviour:
   sceneMusicEnumName: JSAM.Music
   masterVolume: 1
   masterMuted: 0
-  soundVolume: 1
+  soundVolume: 0.8
   soundMuted: 0
-  musicVolume: 1
+  musicVolume: 0.7
   musicMuted: 0
-  spatialSound: 1
+  spatialSound: 0
   audioSources: 32
   disableConsoleLogs: 0
   dontDestroyOnLoad: 1

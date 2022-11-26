@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d15ae218647a2d4f85e14306846c10c, type: 3}
   m_Name: Button2
   m_EditorClassIdentifier: 
-  file: {fileID: 8300000, guid: eee93e998efe24806a8ee64a4be7a67a, type: 3}
+  file: {fileID: 8300000, guid: 9409e5c56e216a746a356d161a2c3f9c, type: 3}
   files: []
   useLibrary: 0
   neverRepeat: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   bypassEffects: 0
   bypassListenerEffects: 0
   bypassReverbZones: 0
-  safeName: 
+  safeName: Button2
   chorusFilter:
     enabled: 0
     dryMix: 0

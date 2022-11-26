@@ -197,6 +197,7 @@ public class StickObject : MonoBehaviour
 
             ParticleManager.Instance.PlayEffect("Explosion", collision.GetContact(0).point);
             CinemachineShake.Instance.ShakeCamera(1f, 0.25f);
+            Debug.Log("AUDIO MANAGER PLAY SOUND EFFECT!");
             AudioManager.PlaySound(Sounds.WallHit);
         }
         else if (collision.collider.CompareTag("Spring"))
@@ -237,7 +238,6 @@ public class StickObject : MonoBehaviour
         else if (collider.CompareTag("HealPad"))
         {
             HealLivesEvent?.Invoke();
-            AudioManager.PlaySound(Sounds.Heal);
         }
     }
 
@@ -252,6 +252,7 @@ public class StickObject : MonoBehaviour
                 Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Wall"), LayerMask.NameToLayer("Player"), true);
                 ReachedEndGoalEvent?.Invoke();
                 PlayGoalAnimation();
+                AudioManager.PlaySound(Sounds.Heal);
             }
         }
         else if (collider.CompareTag("CollectibleTrash"))
@@ -261,6 +262,10 @@ public class StickObject : MonoBehaviour
             TrashCollectedEvent?.Invoke(1);
             ParticleManager.Instance.PlayEffect("Trash", collider.gameObject.transform.position);
             AudioManager.PlaySound(Sounds.Button2);
+        }
+        else if (collider.CompareTag("HealPad"))
+        {
+            AudioManager.PlaySound(Sounds.Heal);
         }
     }
 
