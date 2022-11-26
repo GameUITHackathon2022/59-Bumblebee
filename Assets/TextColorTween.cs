@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TextColorTween : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class TextColorTween : MonoBehaviour
     void OnEnable()
     {
         Color color = GetComponent<TMP_Text>().color;
-        DOVirtual.Color(color, new Color(color.r, color.g, color.a, 0), 2f, color_ => { GetComponent<TMP_Text>().color = color_; })
+        _tween = DOVirtual.Color(color, new Color(color.r, color.g, color.a, 0), 2f, color_ => { GetComponent<TMP_Text>().color = color_; })
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.InOutSine);
     }

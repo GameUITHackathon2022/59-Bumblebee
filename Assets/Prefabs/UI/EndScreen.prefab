@@ -66,8 +66,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 67a8e53dc98c9c84d9fcb609c02988c4, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -490,7 +490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1388395489, guid: 91f350f3b2125f84abfd36e2e8cdace6, type: 3}
+  m_Sprite: {fileID: 1501505539, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -507,6 +507,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2155266185192496169}
     m_Modifications:
+    - target: {fileID: 6397068779884728925, guid: 623a2e3512366c14499ab5010aec7309, type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
     - target: {fileID: 6397068780676476952, guid: 623a2e3512366c14499ab5010aec7309, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

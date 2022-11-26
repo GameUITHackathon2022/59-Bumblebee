@@ -149,6 +149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelName
       objectReference: {fileID: 0}
+    - target: {fileID: 8081119319146659896, guid: b50d5f641a1037d468c2a40887dd8f6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8081119319146659898, guid: b50d5f641a1037d468c2a40887dd8f6c, type: 3}
       propertyPath: m_fontSize
       value: 16
