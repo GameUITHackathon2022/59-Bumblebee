@@ -242,7 +242,11 @@ MonoBehaviour:
   _lockPanelSprite: {fileID: 1156087092, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
   _unselelctedPanelSprite: {fileID: -89015124, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
   _selectedPanelSprite: {fileID: 441390189, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
-  _rankSprites: []
+  _rankSprites:
+  - {fileID: 1481021909, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: -1891952643, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 264026623, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
+  - {fileID: 1058048966, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}
 --- !u!1 &3695686629979170279
 GameObject:
   m_ObjectHideFlags: 0

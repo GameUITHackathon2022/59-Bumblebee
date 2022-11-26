@@ -18,10 +18,38 @@ public class EndScreen : MonoBehaviour
 	[SerializeField] private Image _rankImage;
     [SerializeField] private List<Sprite> _rankSprites;
 
-    public void Setup(int level, PlayerController.LevelEndStatistics statistics)
-	{
+    private void Start()
+    {
+        Hide();
+    }
 
-	}
+    public void Setup(int level, PlayerController.LevelEndStatistics stat)
+    {
+        var won = stat.PlayerWon;
+        if (won)
+        {
+            _winLossImage.sprite = _winSprite;
+        }
+        else
+        {
+            _winLossImage.sprite = _lossSprite;
+        }
+
+        _statTitles.text = $"Time:\nBest Time:\nCollected:";
+        _statValues.text = $"{FormatTime(stat.TimePlayed)}\n{FormatTime(PlayerPrefs.GetFloat($"Level{level}Time", 0))}\n{stat.TrashCollected}/{stat.TotalTrash}";
+
+        if (won)
+        {
+            _rankImage.sprite = _rankSprites[(int)stat.Rank];
+            _rankImage.color = Color.white;
+        }
+        else
+        {
+            _rankImage.sprite = null;
+            _rankImage.color = Color.clear;
+        }
+
+    }
 
 	public void Show()
 	{
@@ -74,5 +102,13 @@ public class EndScreen : MonoBehaviour
             _blockInput = true;
             return;
         }
+    }
+
+    private static string FormatTime(float time)
+    {
+        int minutes = (int)(time / 60);
+        int seconds = (int)time - minutes * 60;
+        int miniSeconds = (int)((time - System.Math.Truncate(time)) * 100);
+        return $"{minutes:00}:{seconds:00}.{miniSeconds:000}";
     }
 }

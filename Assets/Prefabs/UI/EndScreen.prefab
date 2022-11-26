@@ -274,8 +274,8 @@ MonoBehaviour:
   _statTitles: {fileID: 114491005301767596}
   _statValues: {fileID: 6822748014505611085}
   _winLossImage: {fileID: 2370177651285684887}
-  _winSprite: {fileID: -1388395489, guid: 91f350f3b2125f84abfd36e2e8cdace6, type: 3}
-  _lossSprite: {fileID: -2130651332, guid: 91f350f3b2125f84abfd36e2e8cdace6, type: 3}
+  _winSprite: {fileID: 1501505539, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
+  _lossSprite: {fileID: -1300898329, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
   _rankImage: {fileID: 6186319575855553169}
   _rankSprites:
   - {fileID: 1481021909, guid: 3a6549e48b4c26b48b8eb5dea45ab110, type: 3}

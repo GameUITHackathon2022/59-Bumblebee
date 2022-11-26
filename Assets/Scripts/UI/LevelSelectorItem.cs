@@ -44,11 +44,14 @@ public class LevelSelectorItem : MonoBehaviour
             var time = PlayerPrefs.GetFloat($"Level{number}Time", 0f);
             _time.text = FormatTime(time);
             _rank.sprite = _rankSprites[rankInt];
+            _rank.color = Color.white;
             _panel.sprite = _unselelctedPanelSprite;
+
         }
         else
         {
             _rank.sprite = null;
+            _rank.color = Color.clear;
             _time.text = "------";
             _panel.sprite = _unselelctedPanelSprite;
         }
@@ -69,6 +72,7 @@ public class LevelSelectorItem : MonoBehaviour
     {
         _panel.sprite = _lockPanelSprite;
         _rank.sprite = null;
+        _rank.color = Color.clear;
     }
 
     private static string FormatTime(float time)

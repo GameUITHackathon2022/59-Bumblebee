@@ -18,18 +18,20 @@ public class LevelSelector : MonoBehaviour
     private int _currentlySelectedLevel;
     private bool _blockInput;
 
+    public EndScreen EndScreen => _endScreen;
+
     public int CurrentSelectedLevel
     {
         get { return _currentlySelectedLevel; }
         set
         {
-            int lastUnlockedLevel = Mathf.Clamp(value, 1, _items.Count);
-            while (_items[lastUnlockedLevel - 1].IsLocked || lastUnlockedLevel == 1)
+            value = Mathf.Clamp(value, 1, _items.Count);
+            while (_items[value - 1].IsLocked && value > 1)
             {
-                --lastUnlockedLevel;
+                --value;
             }
 
-            if (_currentlySelectedLevel != lastUnlockedLevel)
+            if (_currentlySelectedLevel != value)
             {
                 for (int i = 0; i < _items.Count; i++)
                 {
@@ -37,7 +39,7 @@ public class LevelSelector : MonoBehaviour
                     {
                         _items[i].Select();
                     }
-                    else
+                    else if (!_items[i].IsLocked)
                     {
                         _items[i].Deselect();
                     }
@@ -45,11 +47,13 @@ public class LevelSelector : MonoBehaviour
             }
 
             _currentlySelectedLevel = value;
+            Debug.Log(_currentlySelectedLevel);
         }
     }
 
     private void Start()
     {
+        _currentlySelectedLevel = 0;
         _sessionDriver.StartSession();
         Show();
     }
@@ -103,19 +107,25 @@ public class LevelSelector : MonoBehaviour
         _blockInput = false;
     }
 
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void LoadNextLevel()
     {
-        
+        ++CurrentSelectedLevel;
+        LoadLevel(CurrentSelectedLevel);
     }
 
     public void ReplayLevel()
     {
-
+        LoadLevel(CurrentSelectedLevel);
     }
 
     private void LoadLevel(int number)
     {
-        var levelAsset = GameManager.Instance.Levels[number];
+        var levelAsset = GameManager.Instance.Levels[number - 1];
 
         GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
         {
@@ -123,6 +133,7 @@ public class LevelSelector : MonoBehaviour
             var operation = Addressables.InstantiateAsync(levelAsset);
             operation.Completed += (handle) =>
             {
+                _sessionDriver.StartLevel(handle.Result.GetComponent<LevelController>());
                 GameManager.Instance.LoadingScreen.Transitor.TransitOut();
             };
         });

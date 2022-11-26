@@ -55,16 +55,23 @@ public class SessionDriver : MonoBehaviour
             var number = _currentLevel.LevelNumber;
             var rankInt = stat.PlayerWon ? (int)stat.Rank : -1;
 
+            var oldTime = PlayerPrefs.GetFloat($"Level{number}Time", 0f);
+
             PlayerPrefs.SetInt($"Level{number}Rank", rankInt);
             PlayerPrefs.SetInt($"Level{number + 1}Locked", stat.PlayerWon ? 0 : 1);
-            PlayerPrefs.SetFloat($"Level{number}Time", stat.TimePlayed);
+            if (stat.TimePlayed < oldTime)
+            {
+                PlayerPrefs.SetFloat($"Level{number}Time", stat.TimePlayed);
+            }
             PlayerPrefs.SetInt($"CurrentLevel", number + 1);
 
             _currentLevel = null;
 
             GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
             {
-                _levelSelector.Show();
+                _levelSelector.EndScreen.Setup(_currentLevel.LevelNumber, stat);
+                _levelSelector.EndScreen.Show();
+                GameManager.Instance.LoadingScreen.Transitor.TransitOut();
             });
         });
     }
