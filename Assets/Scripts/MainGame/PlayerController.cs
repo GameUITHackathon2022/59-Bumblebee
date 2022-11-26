@@ -235,6 +235,5 @@ public class PlayerController : MonoBehaviour
     private void OnHeal()
     {
         CurrentLiveCount = MaxLiveCount;
-        Debug.Log("aa");
     }
 }

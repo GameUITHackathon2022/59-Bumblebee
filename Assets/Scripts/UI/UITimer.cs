@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using TMPro;
 
 public class UITimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _currentTimerText;
-    [SerializeField] private TMP_Text _rankText;
+    [SerializeField] private Image _rankImage;
     [SerializeField] private TMP_Text _timeForRankText;
     [SerializeField] private List<Sprite> _rankSprites;
 
-    private LevelRank _currentRank;
 
     public void SetCurrentTime(float time)
     {
@@ -21,7 +21,7 @@ public class UITimer : MonoBehaviour
     public void SetRankTimes(LevelRank rank, float rankTime)
     {
         _timeForRankText.text = FormatTime(rankTime);
-        _rankText.text = rank.ToString();
+        _rankImage.sprite = _rankSprites[(int)rank];
     }
 
     private string FormatTime(float time)
@@ -29,6 +29,6 @@ public class UITimer : MonoBehaviour
         int minutes = (int)(time / 60);
         int seconds = (int)time - minutes * 60;
         int miniSeconds = (int)((time - System.Math.Truncate(time)) * 100);
-        return $"{minutes}:{seconds}.{miniSeconds}";
+        return $"{minutes:00}:{seconds:00}.{miniSeconds:000}";
     }
 }

@@ -317,6 +317,8 @@ MonoBehaviour:
   _startTransform: {fileID: 1391654825101094037}
   _goalTransform: {fileID: 1391654825828932513}
   _trashHost: {fileID: 2285764996177698842}
+  _lockedGoalSprite: {fileID: -1644674953, guid: c7a476ebe6e0ee44f8e88684ab6a14ed, type: 3}
+  _unlockedGoalSprite: {fileID: 1992129074, guid: c7a476ebe6e0ee44f8e88684ab6a14ed, type: 3}
 --- !u!1 &1391654826161471014
 GameObject:
   m_ObjectHideFlags: 0

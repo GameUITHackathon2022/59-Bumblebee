@@ -47,6 +47,7 @@ public class TestDriver : MonoBehaviour
     private void OnPlayerDoneCollectingTrash()
     {
         Debug.Log("Yay!");
+        _testLevelObject.UnlockGoal();
     }
 
     private void OnPlayerWin()
