@@ -43,9 +43,21 @@ public class IndicatorController : MonoBehaviour
 
     private void Update()
     {
+        float nearestDist = float.MaxValue;
+        Transform nearestObject = null;
         foreach (var watchedTransform in _watchedTransforms)
         {
-            if (watchedTransform.Key == null || !watchedTransform.Key.gameObject.activeSelf)
+            if (Vector2.Distance(_centerTransform.position, watchedTransform.Key.position) < nearestDist)
+            {
+                nearestDist = Vector2.Distance(_centerTransform.position, watchedTransform.Key.position);
+                nearestObject = watchedTransform.Key;
+            }
+        }
+
+        foreach (var watchedTransform in _watchedTransforms)
+        {
+            if (watchedTransform.Key == null || !watchedTransform.Key.gameObject.activeSelf || 
+                    (nearestObject != null && watchedTransform.Key.GetInstanceID() != nearestObject.GetInstanceID()))
             {
                 watchedTransform.Value.gameObject.SetActive(false);
             }

@@ -43,6 +43,7 @@ public class StickObject : MonoBehaviour
     [SerializeField] private float _bounceRotation = 35f;
     [SerializeField] private float _touchGoalSpeedIncrease = 5f;
     [SerializeField] private float _springBoostDeteriorateRate = 15f;
+    [SerializeField] private float _springTime = 15f;
 
 
     private int _rotateDirection;
@@ -50,6 +51,7 @@ public class StickObject : MonoBehaviour
     private int _bounceContactCode;
     private float _invincibilityTimer;
     private Vector2 _influenceVector;
+    private float _springTimer = 0;
 
     private float _springBoost;
 
@@ -192,11 +194,19 @@ public class StickObject : MonoBehaviour
             _bounceContactCode = GetContactRotationOnColliding(collision.GetContact(0).point);
             _invincibilityTimer = _invincibilityTime;
             DoPositionBounce(collision.GetContact(0).normal);
+
+            
         }
         else if (collision.collider.CompareTag("Spring"))
         {
+            if (_springTimer <= 0f)
+            {
+                
+                _springTimer = _springTime;
+            }
+
             _rotateDirection = -_rotateDirection;
-            AddBounce(collision.collider.GetComponent<SpringObject>().SpringBounceAngle, 
+            AddBounce(collision.collider.GetComponent<SpringObject>().SpringBounceAngle,
                 collision.collider.GetComponent<SpringObject>().SpringMagnitude * collision.GetContact(0).normal);
         }
     }
@@ -293,11 +303,11 @@ public class StickObject : MonoBehaviour
 
     private void PlayGoalAnimation()
     {
-        transform.DOScale(0f, 3.5f);
+        transform.DOScale(0f, 2f);
     }
 
     private void PlaySinkAnimation()
     {
-        transform.DOScale(0f, 3.5f);
+        transform.DOScale(0f, 2f);
     }
 }
