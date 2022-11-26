@@ -10,6 +10,9 @@ public class MovingObstacle : MonoBehaviour
     [SerializeField] private float _startDelay = 0.5f;
     [SerializeField] private float _playerBlowUpDelay = 1f;
 
+    private SpriteRenderer _renderer;
+    private Collider2D _collider;
+
     private float _idleTimer;
 
     public float IdleTimer
@@ -18,7 +21,16 @@ public class MovingObstacle : MonoBehaviour
         set
         {
             _idleTimer = value;
-            gameObject.SetActive(false);
+
+            if (value <= 0)
+            {
+                Enable();
+                StartMoving();
+            }
+            else
+            {
+                Disable();
+            }
         }
     }
 
@@ -29,13 +41,17 @@ public class MovingObstacle : MonoBehaviour
 
     private void Start()
     {
-        StartMoving();
+        _renderer = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<Collider2D>();
+
+        IdleTimer = _startDelay;
     }
 
     private void FixedUpdate()
     {
-        if (gameObject.activeSelf)
+        if (IdleTimer > 0f)
         {
+            IdleTimer -= Time.fixedDeltaTime;
             return;
         }
 
@@ -45,6 +61,19 @@ public class MovingObstacle : MonoBehaviour
         {
             StartMoving();
         }
+
+    }
+
+    private void Disable()
+    {
+        _renderer.enabled = false;
+        _collider.enabled = false;
+    }
+
+    private void Enable()
+    {
+        _renderer.enabled = true;
+        _collider.enabled = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
