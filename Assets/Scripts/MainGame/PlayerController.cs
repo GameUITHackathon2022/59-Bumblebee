@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UITrashCounter _uiTrashCounter;
     [SerializeField] private IndicatorController _indicatorController;
 
+
     private StickObject _stickObject;
 
     private int _maxLiveCount;
