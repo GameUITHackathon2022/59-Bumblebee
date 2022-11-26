@@ -275,10 +275,10 @@ public class StickObject : MonoBehaviour
             Debug.LogWarning($"{name}: Your contact detection code is faulty, contactCode is 0, it should not be 0, please check");
         }
 
-        if (_rotateDirection == -1)
-        {
-            contactCode = -contactCode;
-        }
+        //if (_rotateDirection == -1)
+        //{
+        //    contactCode = -contactCode;
+        //}
 
         return contactCode;
     }
