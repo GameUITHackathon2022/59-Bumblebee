@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour
         CollectedTrashCount = 0;
         _rankTimes = new Dictionary<LevelRank, float>(rankTimes);
 
+        _touchedGoal = false;
         _playTime = 0f;
         _currentRank = LevelRank.S_RANK;
         _uiTimer.SetRankTimes(_currentRank, _rankTimes[_currentRank]);

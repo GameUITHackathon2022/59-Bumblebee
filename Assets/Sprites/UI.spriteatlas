@@ -27,7 +27,7 @@ SpriteAtlas:
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
-      enableTightPacking: 1
+      enableTightPacking: 0
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
@@ -38,6 +38,7 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 5c29735122408414bbcc04db80b5c58d, type: 3}
   - {fileID: -2073945657, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
   - {fileID: -1300898329, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
   - {fileID: 1661851456, guid: d1b0f352655de4c49b695548d355a2a0, type: 3}
@@ -63,6 +64,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7e564d8606b45a24ab8b950b9ccd74ab, type: 3}
   - {fileID: 21300000, guid: 3325c44c802b40f4ba3c19e07ec08cc6, type: 3}
   m_PackedSpriteNamesToIndex:
+  - BG_Menu
   - title
   - stage_failed
   - level_select
