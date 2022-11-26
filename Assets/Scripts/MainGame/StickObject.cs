@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,6 +53,13 @@ public class StickObject : MonoBehaviour
 
     public bool IsStunned => _bounceTimer > 0;
     public bool IsInvincible => _invincibilityTimer > 0;
+
+    public StickInputReceiver Input => _inputReceiver;
+
+    public event Action ReachedEndGoalEvent;
+    public event Action<int> TrashCollectedEvent;
+    public event Action HealLivesEvent;
+    public event Action LoseLiveEvent;
 
     private void Start()
     {
@@ -138,6 +146,11 @@ public class StickObject : MonoBehaviour
     {
         if (collision.collider.CompareTag("Wall"))
         {
+            if (_invincibilityTimer <= 0f)
+            {
+                LoseLiveEvent?.Invoke();
+            }
+
             _bounceTimer = _bounceTime;
             _bounceContactCode = GetContactRotationOnColliding(collision.GetContact(0).point);
             _invincibilityTimer = _invincibilityTime;
@@ -151,7 +164,6 @@ public class StickObject : MonoBehaviour
         {
             _hasTouchedGoal = true;
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Wall"), LayerMask.NameToLayer("Player"), true);
-            Debug.Log("Touched goal, please end level.");
         }
         else if (collider.CompareTag("Puller"))
         {
@@ -161,6 +173,21 @@ public class StickObject : MonoBehaviour
                 var pullVect = puller.GetPullVector(transform.position);
                 _influenceVector = pullVect;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Goal"))
+        {
+            _hasTouchedGoal = true;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Wall"), LayerMask.NameToLayer("Player"), true);
+            ReachedEndGoalEvent?.Invoke();
+        }
+        else if (collider.CompareTag("CollectibleTrash"))
+        {
+            collider.gameObject.GetComponent<CollectableTrash>().OnCollect();
+            TrashCollectedEvent?.Invoke(1);
         }
     }
 
