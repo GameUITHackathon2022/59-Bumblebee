@@ -224,7 +224,8 @@ MonoBehaviour:
   _bounceTime: 0.1
   _invincibilityTime: 0.5
   _bounceRotation: 25
-  _touchGoalSpeedIncrease: 999
+  _touchGoalSpeedIncrease: 500
+  _springBoostDeteriorateRate: 100
 --- !u!114 &5274534264108664599
 MonoBehaviour:
   m_ObjectHideFlags: 0
