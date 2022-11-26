@@ -56,22 +56,23 @@ public class IndicatorController : MonoBehaviour
                 var obj = watchedTransform.Key;
                 var indicator = watchedTransform.Value;
                 // Update indicator location
-                var delta = (Vector2)(obj.position - transform.position);
+                var delta = (Vector2)(obj.position - _centerTransform.position);
                 var direction = delta.normalized;
-                var screenPos = Camera.main.WorldToScreenPoint(obj.position);
 
-                var theta = Mathf.Rad2Deg * Mathf.Atan(Width / Height);
                 var alpha = Mathf.Rad2Deg * Mathf.Atan(direction.x / direction.y);
 
-                var hit = Physics2D.Raycast(_centerTransform.position, direction, delta.magnitude, LayerMask.NameToLayer("UI"));
-                if (hit.collider == null)
-                {
-                    indicator.transform.position = hit.point;
-                }
-                else
+                if (delta.magnitude <= 10f)
                 {
                     indicator.transform.position = obj.position;
                 }
+                else
+                {
+                    indicator.transform.position = _centerTransform.position + (Vector3)direction * 10f;
+                }
+
+                var temp = indicator.GetComponent<RectTransform>().localPosition;
+                temp.z = 0f;
+                indicator.GetComponent<RectTransform>().localPosition = temp;
                 indicator.transform.up = direction;
             }
         }
