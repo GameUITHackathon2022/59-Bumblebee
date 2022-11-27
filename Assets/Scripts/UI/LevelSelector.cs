@@ -128,6 +128,15 @@ public class LevelSelector : MonoBehaviour
             ++CurrentSelectedLevel;
             LoadLevel(CurrentSelectedLevel);
         }
+        else
+        {
+            GameManager.Instance.LoadingScreen.Transitor.TransitIn(() =>
+            {
+                Show();
+                _endScreen.Hide();
+                GameManager.Instance.LoadingScreen.Transitor.TransitOut();
+            });
+        }
     }
 
     public void ReplayLevel()
